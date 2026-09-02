@@ -245,6 +245,17 @@ section{padding:130px 0;position:relative}
 }
 .stage .device{display:flex;justify-content:center;perspective:1600px}
 .stage .phone{width:330px;transform:rotateX(18deg) scale(.84);transform-origin:center 20%;transition:none}
+.stage .device{flex-direction:column;align-items:center;gap:14px}
+.cmp{touch-action:none;cursor:ew-resize;user-select:none}
+.cmp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp-top{position:absolute;inset:0;clip-path:inset(0 0 0 var(--x))}
+.cmp-handle{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:rgba(255,255,255,.9);transform:translateX(-1px);box-shadow:0 0 14px rgba(0,0,0,.5);z-index:4}
+.cmp-handle span{position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;transform:translate(-50%,-50%);box-shadow:0 8px 24px -6px rgba(0,0,0,.7);transition:transform .2s var(--ease)}
+.cmp-handle span svg{width:20px;height:20px}
+.cmp.grab .cmp-handle span{transform:translate(-50%,-50%) scale(1.12)}
+.cmp-lab{position:absolute;top:52px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:#fff;background:rgba(10,10,12,.55);backdrop-filter:blur(6px);padding:5px 9px;border-radius:99px;z-index:5;pointer-events:none}
+.cmp-lab.l{left:14px}.cmp-lab.r{right:14px;background:rgba(232,97,28,.9)}
+.cmp-hint{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0}
 .stage-copy{max-width:46ch}
 .stage-copy .lede{margin-bottom:28px}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px;color:var(--paper-2)}
@@ -315,6 +326,41 @@ section{padding:130px 0;position:relative}
 .tabs .phone{width:300px;transform:rotateY(12deg) rotateX(3deg)}
 .tabs .screen img{position:absolute;inset:0;opacity:0;transition:opacity .5s var(--ease),transform .7s var(--ease);transform:scale(1.04)}
 .tabs .screen img.on{opacity:1;transform:none}
+
+
+/* ---- ANATOMY: scrub the edit ---- */
+.anat{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.anat .device{display:flex;justify-content:center;perspective:1400px}
+.anat .phone{width:300px;transform:rotateY(10deg) rotateX(2deg)}
+.anat .phone video{width:100%;height:100%;object-fit:cover}
+.an-now{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:center;background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-bottom:26px;min-height:96px}
+.an-now .n{font-family:var(--display);font-weight:900;font-stretch:112%;font-size:44px;color:var(--orange);line-height:1;letter-spacing:-.03em}
+.an-now b{display:block;font-size:19px;font-weight:600;letter-spacing:-.01em}
+.an-now i{display:block;font-style:normal;color:var(--mute);font-size:14.5px;margin-top:4px}
+.tl{padding:22px 0 8px;cursor:pointer;outline:none}
+.tl:focus-visible .tl-head{box-shadow:0 0 0 4px rgba(232,97,28,.35)}
+.tl-track{position:relative;height:10px;border-radius:99px;background:var(--ink-3);border:1px solid var(--line)}
+.tl-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;background:linear-gradient(90deg,rgba(232,97,28,.35),rgba(232,97,28,.7))}
+.mk{position:absolute;top:-8px;left:var(--at);width:var(--len);height:24px;background:transparent;border:0;padding:0;cursor:pointer}
+.mk i{display:block;position:absolute;left:0;right:0;top:8px;height:8px;border-radius:99px;background:var(--orange);opacity:.55;transition:opacity .2s,transform .2s}
+.mk:hover i,.mk.on i{opacity:1;transform:scaleY(1.5)}
+.tl-head{position:absolute;top:50%;left:0;width:22px;height:22px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 4px 16px rgba(0,0,0,.6);pointer-events:none;transition:box-shadow .2s}
+.tl-head em{position:absolute;bottom:130%;left:50%;transform:translateX(-50%);font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--paper);background:var(--ink-3);border:1px solid var(--line-2);padding:3px 7px;border-radius:6px;white-space:nowrap}
+.tl-ticks{position:relative;height:18px;margin-top:8px}
+.tl-ticks s{position:absolute;text-decoration:none;font-family:var(--mono);font-size:10px;color:var(--mute);transform:translateX(-50%)}
+.an-ctl{display:flex;align-items:center;gap:12px;margin:14px 0 22px}
+.pbtn{width:46px;height:46px;border-radius:50%;background:var(--orange);border:1px solid var(--orange);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .2s var(--ease)}
+.pbtn:hover{transform:scale(1.06)}
+.pbtn svg{width:18px;height:18px;fill:#fff}
+.pbtn .ic-pause{display:none}
+.pbtn.playing .ic-play{display:none}.pbtn.playing .ic-pause{display:block}
+.pbtn.ghost{width:auto;height:38px;border-radius:99px;background:transparent;border-color:var(--line-2);color:var(--paper-2);padding:0 14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.an-legend{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);display:inline-flex;align-items:center;gap:8px}
+.an-legend i{width:18px;height:6px;border-radius:99px;background:var(--orange)}
+.an-words{margin:0;font-size:17px;line-height:1.9;color:var(--mute);max-width:60ch}
+.an-words span{transition:color .15s,background .15s;border-radius:4px;padding:0 2px}
+.an-words span.said{color:var(--paper-2)}
+.an-words span.now{color:#fff;background:var(--orange)}
 
 /* ---- PROCESS: stacking cards ---- */
 .stack{display:flex;flex-direction:column;gap:28px;position:relative}
@@ -444,6 +490,9 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   .tab{flex:0 0 82vw;max-width:360px;scroll-snap-align:start;grid-template-columns:26px 1fr;padding:18px}
   .tab p{max-height:120px;opacity:1;margin-top:6px}
 
+  .anat{grid-template-columns:1fr;gap:26px}
+  .anat .phone{width:min(62vw,250px);transform:none}
+  .an-words{font-size:15.5px;line-height:1.8}
   .stack{gap:16px}
   .step{position:static;padding:28px;grid-template-columns:1fr;gap:14px;transform:none!important;filter:none!important}
   .step .n{font-size:56px}
@@ -463,7 +512,8 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 
   summary{font-size:17px;padding:22px 40px 22px 0}
   #end{padding:120px 0}
-  .foot{flex-direction:column;align-items:flex-start;gap:12px;padding-bottom:70px}
+  body{padding-bottom:84px}
+  .foot{flex-direction:column;align-items:flex-start;gap:12px}
   .dock{display:block}
 }
 @media(prefers-reduced-motion:reduce){
@@ -475,6 +525,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   .step{position:static}
 }
 </style>
+<noscript><style>.rv,.rv-l,.rv-r,.sub,.cta-row,.tiny,.chip{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -488,6 +539,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <li><a href="#work" data-sec="work">Work</a></li>
     <li><a href="#proof" data-sec="proof">Proof</a></li>
     <li><a href="#inside" data-sec="inside">What's inside</a></li>
+    <li><a href="#anatomy" data-sec="anatomy">Anatomy</a></li>
     <li><a href="#process" data-sec="process">Process</a></li>
     <li><a href="#about" data-sec="about">Max</a></li>
     <li><a href="#price" data-sec="price">Pricing</a></li>
@@ -551,12 +603,16 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <div class="stage">
       <div class="device">
         <div class="phone" id="stagePhone">
-          <div class="screen">
+          <div class="screen cmp" id="cmp" style="--x:52%">
             <div class="notch"></div>
             <div class="glare"></div>
-            <video src="media/reel1.mp4" poster="media/reel1.jpg" muted loop playsinline preload="metadata" aria-label="Before and after edit of an e-commerce creator's clip"></video>
+            <video class="cmp-raw" src="media/cmp_raw.mp4" poster="media/cmp_raw.jpg" muted loop playsinline preload="metadata" aria-label="Raw clip"></video>
+            <div class="cmp-top"><video class="cmp-edit" src="media/cmp_edit.mp4" poster="media/cmp_edit.jpg" muted loop playsinline preload="metadata" aria-label="Edited clip"></video></div>
+            <div class="cmp-handle" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 4 12l5 6M15 6l5 6-5 6"/></svg></span></div>
+            <b class="cmp-lab l">raw</b><b class="cmp-lab r">edited</b>
           </div>
         </div>
+        <p class="cmp-hint">drag the line</p>
       </div>
       <div class="stage-copy">
         <p class="eyebrow rv">Before / after</p>
@@ -564,7 +620,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <p class="lede rv">Left is the clip as it was recorded. Right is the same clip after I've cut it. Nothing was re-shot, nothing was scripted — every graphic is built out of what the person actually said.</p>
         <div class="kv rv">
           <b>Source</b><span>A phone recording of a talking head, no B-roll</span>
-          <b>Added</b><span>Hook card, matched captions, six motion-graphic beats, UI sound design</span>
+          <b>Added</b><span>A grade, matched captions, four drawn graphics, UI sound design</span>
           <b>Time</b><span>Under 48 hours from link to delivered file</span>
         </div>
       </div>
@@ -702,6 +758,39 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
             <img data-img="numbers" src="media/tab_numbers.jpg" alt="Frame from an edit: 6 figures in pure profit on a green card">
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANATOMY ============ -->
+<section id="anatomy">
+  <div class="wrap">
+    <p class="eyebrow rv">Anatomy of an edit</p>
+    <h2 class="display rv">Fifteen seconds,<br>four <span class="o">events</span>.</h2>
+    <p class="lede rv">This is the real estate reel from the rail, opened up. Scrub the timeline, tap a marker, watch the words light up as they're spoken. Every caption is matched to the audio, not guessed.</p>
+    <div class="anat rv">
+      <div class="device">
+        <div class="phone">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="glare"></div>
+            <video id="anV" src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="metadata" aria-label="Real estate before and after reel"></video>
+          </div>
+        </div>
+      </div>
+      <div class="an-side">
+        <div class="an-now"><span class="n" id="anIdx">&mdash;</span><div><b id="anTitle">Press play, or drag the playhead</b><i id="anSub">the graphics land on the exact word</i></div></div>
+        <div class="tl" id="tl" role="slider" aria-label="Timeline" aria-valuemin="0" aria-valuemax="15.28" aria-valuenow="0" tabindex="0">
+          <div class="tl-track"><i class="tl-fill" id="tlFill"></i><button class="mk" style="--at:5.30%;--len:14.66%" data-t="0.81" data-i="0" aria-label="A price tag gets crossed out"><i></i></button><button class="mk" style="--at:40.31%;--len:14.33%" data-t="6.16" data-i="1" aria-label="The listing re-orders itself"><i></i></button><button class="mk" style="--at:57.72%;--len:19.24%" data-t="8.82" data-i="2" aria-label="Three messages, three replies"><i></i></button><button class="mk" style="--at:83.51%;--len:16.49%" data-t="12.76" data-i="3" aria-label="Four houses stamped SOLD"><i></i></button><span class="tl-head" id="tlHead"><em id="tlTime">0.00</em></span></div>
+          <div class="tl-ticks"><s style="left:0.00%">0s</s><s style="left:19.63%">3s</s><s style="left:39.27%">6s</s><s style="left:58.90%">9s</s><s style="left:78.53%">12s</s><s style="left:98.17%">15s</s></div>
+        </div>
+        <div class="an-ctl">
+          <button class="pbtn" id="anPlay" aria-label="Play or pause"><svg viewBox="0 0 24 24" class="ic-play"><path d="M6 3l14 9-14 9z"/></svg><svg viewBox="0 0 24 24" class="ic-pause"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+          <button class="pbtn ghost" id="anMute" aria-label="Toggle sound">sound on</button>
+          <span class="an-legend"><i></i>graphic beat</span>
+        </div>
+        <p class="an-words" id="anWords"><span data-s="0.1" data-e="0.39">Three</span> <span data-s="0.39" data-e="0.81">things</span> <span data-s="0.81" data-e="1.11">sell</span> <span data-s="1.11" data-e="1.18">a</span> <span data-s="1.18" data-e="1.55">house</span> <span data-s="1.55" data-e="2.05">faster</span> <span data-s="2.05" data-e="2.33">than</span> <span data-s="2.33" data-e="2.35">a</span> <span data-s="2.35" data-e="2.68">price</span> <span data-s="2.68" data-e="3.08">cut.</span> <span data-s="3.08" data-e="3.55">Photos</span> <span data-s="3.55" data-e="3.94">taken</span> <span data-s="3.94" data-e="4.1">at</span> <span data-s="4.1" data-e="4.5">seven</span> <span data-s="4.5" data-e="4.65">in</span> <span data-s="4.65" data-e="4.89">the</span> <span data-s="4.89" data-e="5.48">morning.</span> <span data-s="5.48" data-e="5.58">A</span> <span data-s="5.58" data-e="5.93">listing</span> <span data-s="5.93" data-e="6.16">that</span> <span data-s="6.16" data-e="6.45">leads</span> <span data-s="6.45" data-e="6.68">with</span> <span data-s="6.68" data-e="6.9">the</span> <span data-s="6.9" data-e="7.28">kitchen,</span> <span data-s="7.28" data-e="7.48">not</span> <span data-s="7.48" data-e="7.68">the</span> <span data-s="7.68" data-e="8.09">square</span> <span data-s="8.09" data-e="8.6">footage,</span> <span data-s="8.6" data-e="8.82">and</span> <span data-s="8.82" data-e="9.5">answering</span> <span data-s="9.5" data-e="9.87">every</span> <span data-s="9.87" data-e="10.41">message</span> <span data-s="10.41" data-e="10.85">inside</span> <span data-s="10.85" data-e="11.76">10</span> <span data-s="11.76" data-e="11.88">minutes.</span> <span data-s="11.88" data-e="12.27">That</span> <span data-s="12.27" data-e="12.52">last</span> <span data-s="12.52" data-e="12.76">one</span> <span data-s="12.76" data-e="13.15">alone</span> <span data-s="13.15" data-e="13.65">closed</span> <span data-s="13.65" data-e="13.81">my</span> <span data-s="13.81" data-e="14.13">last</span> <span data-s="14.13" data-e="14.46">four</span> <span data-s="14.46" data-e="15.16">deals.</span> </p>
       </div>
     </div>
   </div>
@@ -938,7 +1027,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     if (y < vh * 1.3) {
       heroLayers.forEach(l => l.style.transform = `translate3d(0,${y * l.dataset.depth}px,0)`);
       const p = Math.min(1, y / vh);
-      if (!mobile()) heroPhone.style.transform = `translate3d(0,${y * .18}px,0) rotateY(${-14 + p * 14}deg) rotateX(${4 - p * 4}deg) rotateZ(${2 - p * 2}deg)`;
+      if (!mobile()) heroPhone.style.transform = `translate3d(0,${y * .18}px,0) rotateY(calc(${-14 + p * 14}deg + var(--hmx,0deg))) rotateX(${4 - p * 4}deg) rotateZ(${2 - p * 2}deg)`;
       else heroPhone.style.transform = `translate3d(0,${y * .10}px,0) rotateY(${-8 + p * 8}deg)`;
     }
 
@@ -979,9 +1068,81 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   addEventListener('resize', frame);
   frame();
 
+
+  /* ---------- compare slider: raw vs edited, inside the phone ---------- */
+  const cmp = $('#cmp'), vRaw = $('.cmp-raw', cmp), vEd = $('.cmp-edit', cmp);
+  let cx = 52, cmpIdle = true, cmpT0 = performance.now();
+  function setX(px) { cx = Math.max(6, Math.min(94, px)); cmp.style.setProperty('--x', cx + '%'); }
+  function cmpFrom(e) { const r = cmp.getBoundingClientRect(); setX(((e.clientX - r.left) / r.width) * 100); }
+  cmp.addEventListener('pointerdown', e => { cmpIdle = false; cmp.classList.add('grab'); cmp.setPointerCapture(e.pointerId); cmpFrom(e); });
+  cmp.addEventListener('pointermove', e => { if (cmp.classList.contains('grab')) cmpFrom(e); });
+  ['pointerup','pointercancel'].forEach(t => cmp.addEventListener(t, () => cmp.classList.remove('grab')));
+  (function sway(now) { if (cmpIdle && !reduce) setX(52 + Math.sin((now - cmpT0) / 1400) * 9); requestAnimationFrame(sway); })(performance.now());
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { vRaw.play().catch(()=>{}); vEd.play().catch(()=>{}); } else { vRaw.pause(); vEd.pause(); }
+  }), {threshold:.3}).observe(cmp);
+  setInterval(() => { if (!vRaw.paused && Math.abs(vRaw.currentTime - vEd.currentTime) > .08) vEd.currentTime = vRaw.currentTime; }, 800);
+
+  /* ---------- anatomy: scrub the real estate reel ---------- */
+  const anV = $('#anV'), tl = $('#tl'), tlFill = $('#tlFill'), tlHead = $('#tlHead'), tlTime = $('#tlTime');
+  const anPlay = $('#anPlay'), anMute = $('#anMute'), anIdx = $('#anIdx'), anTitle = $('#anTitle'), anSub = $('#anSub');
+  const marks = $$('.mk'), wspans = $$('#anWords span');
+  const BEATS = [[0.81, 3.05, "A price tag gets crossed out", "not a price cut: three things"], [6.16, 8.35, "The listing re-orders itself", "kitchen first, square footage struck"], [8.82, 11.76, "Three messages, three replies", "every one answered inside ten minutes"], [12.76, 15.28, "Four houses stamped SOLD", "the last four deals"]];
+  const DUR = 15.28;
+  function anSeek(t) { anV.currentTime = Math.max(0, Math.min(DUR - .05, t)); anPaint(); }
+  function anFrom(e) { const r = $('.tl-track', tl).getBoundingClientRect(); anSeek(((e.clientX - r.left) / r.width) * DUR); }
+  let scrubbing = false;
+  tl.addEventListener('pointerdown', e => { if (e.target.closest('.mk')) return; scrubbing = true; tl.setPointerCapture(e.pointerId); anFrom(e); });
+  tl.addEventListener('pointermove', e => { if (scrubbing) anFrom(e); });
+  ['pointerup','pointercancel'].forEach(t => tl.addEventListener(t, () => scrubbing = false));
+  tl.addEventListener('keydown', e => { if (e.key === 'ArrowRight') anSeek(anV.currentTime + .5); if (e.key === 'ArrowLeft') anSeek(anV.currentTime - .5); if (e.key === ' ') { e.preventDefault(); anPlay.click(); } });
+  marks.forEach(m => m.addEventListener('click', () => { anSeek(+m.dataset.t + .02); anV.play(); }));
+  anPlay.addEventListener('click', () => anV.paused ? anV.play() : anV.pause());
+  anMute.addEventListener('click', () => { anV.muted = !anV.muted; anMute.textContent = anV.muted ? 'sound on' : 'mute'; });
+  anV.addEventListener('play', () => anPlay.classList.add('playing'));
+  anV.addEventListener('pause', () => anPlay.classList.remove('playing'));
+  function anPaint() {
+    const t = anV.currentTime, p = t / DUR;
+    tlFill.style.width = (p * 100) + '%'; tlHead.style.left = (p * 100) + '%'; tlTime.textContent = t.toFixed(2); tl.setAttribute('aria-valuenow', t.toFixed(2));
+    const bi = BEATS.findIndex(b => t >= b[0] && t < b[1]);
+    marks.forEach((m, i) => m.classList.toggle('on', i === bi));
+    if (bi >= 0) { anIdx.textContent = '0' + (bi + 1); anTitle.textContent = BEATS[bi][2]; anSub.textContent = BEATS[bi][3]; }
+    else { anIdx.textContent = '\u2014'; anTitle.textContent = t < .5 ? 'Press play, or drag the playhead' : 'Face on screen, letting the line breathe'; anSub.textContent = t < .5 ? 'the graphics land on the exact word' : 'a card only earns its place when the sentence needs one'; }
+    wspans.forEach(w => { const s = +w.dataset.s, e = +w.dataset.e; w.classList.toggle('now', t >= s && t < e + .05); w.classList.toggle('said', t >= e + .05); });
+  }
+  (function anLoop() { if (!anV.paused) anPaint(); requestAnimationFrame(anLoop); })();
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) anV.play().catch(()=>{}); else anV.pause(); }), {threshold:.35}).observe($('#anatomy'));
+
+  /* ---------- mouse-only details: hover preview, tilt, magnetic buttons, cursor parallax ---------- */
+  if (matchMedia('(pointer:fine)').matches) {
+    $$('.card').forEach(c => {
+      const v = $('video', c);
+      c.addEventListener('mouseenter', () => { if (!c.classList.contains('playing')) { v.muted = true; v.play().catch(()=>{}); } });
+      c.addEventListener('mouseleave', () => { if (!c.classList.contains('playing')) { v.pause(); v.currentTime = 0; } });
+    });
+    $$('.tier, .card').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-6px)`;
+      });
+      el.addEventListener('pointerleave', () => el.style.transform = '');
+    });
+    $$('.btn.big').forEach(b => {
+      b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width/2) * .18}px,${(e.clientY - r.top - r.height/2) * .28}px)`; });
+      b.addEventListener('pointerleave', () => b.style.transform = '');
+    });
+    let mx = 0, my = 0;
+    addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, {passive:true});
+    (function heroMouse() {
+      if (scrollY < innerHeight && !reduce) {
+        heroLayers.forEach(l => { const d = +l.dataset.depth; l.style.transform = `translate3d(${(mx * d * 90).toFixed(1)}px,${(scrollY * d + my * d * 60).toFixed(1)}px,0)`; });
+        heroPhone.style.setProperty('--hmx', (mx * 6).toFixed(2) + 'deg');
+      }
+      requestAnimationFrame(heroMouse);
+    })();
+  }
+
   /* ---------- stage phone plays only when on screen ---------- */
-  const sv = $('video', stagePhone);
-  new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? sv.play().catch(()=>{}) : sv.pause()), {threshold:.35}).observe(stagePhone);
 
   /* ---------- cards: click plays with sound, one at a time ---------- */
   const cards = $$('.card');
