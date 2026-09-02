@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://maxhlove19.github.io/deluxereelsonly/sitemap.xml
