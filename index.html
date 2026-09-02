@@ -480,6 +480,22 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 .dock .btn{width:100%;justify-content:center;padding:18px;font-size:16px;box-shadow:0 20px 40px -14px rgba(232,97,28,.7)}
 
 
+
+/* ---- mobile menu ---- */
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:transparent;position:relative;cursor:pointer;flex:none}
+.burger i{position:absolute;left:13px;right:13px;height:2px;background:var(--paper);border-radius:2px;transition:transform .35s var(--ease),top .35s var(--ease)}
+.burger i:first-child{top:17px}.burger i:last-child{top:25px}
+.burger.on i:first-child{top:21px;transform:rotate(45deg)}.burger.on i:last-child{top:21px;transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:95;background:var(--ink);display:none;padding:calc(var(--nav-h) + 24px) 22px 30px;overflow:auto}
+.menu.open{display:block}
+.menu-in{display:flex;flex-direction:column;gap:2px}
+.menu-in a:not(.btn){display:flex;align-items:baseline;gap:16px;text-decoration:none;font-family:var(--display);font-weight:900;font-stretch:112%;text-transform:uppercase;font-size:clamp(34px,9.5vw,44px);letter-spacing:-.02em;line-height:1.15;padding:8px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.menu-in a:not(.btn) b{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.14em;color:var(--orange)}
+.menu.in .menu-in a:not(.btn){opacity:1;transform:none}
+.menu-cta{margin-top:24px;justify-content:center}
+.menu-foot{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:18px 0 0;text-align:center}
+@media(max-width:860px){.burger{display:block}#nav .btn{margin-left:auto;padding:10px 14px}}
+
 /* ---- sheet (form slide-over) ---- */
 .sheet{position:fixed;inset:0;z-index:200;display:none}
 .sheet.open{display:block}
@@ -621,6 +637,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <li><a href="#faq" data-sec="faq">FAQ</a></li>
   </ul>
   <a class="btn" href="https://tally.so/r/jaVYZa">Get a free edit</a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
   <div class="track" aria-hidden="true"><i id="trackFill"></i><span id="trackDots"></span></div>
 </nav>
 
@@ -1058,6 +1075,21 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   </div>
 </footer>
 
+<!-- mobile menu -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-in" aria-label="Sections">
+    <a href="#work"><b>01</b>Work</a>
+    <a href="#proof"><b>02</b>Proof</a>
+    <a href="#inside"><b>03</b>What's inside</a>
+    <a href="#anatomy"><b>04</b>Anatomy</a>
+    <a href="#process"><b>05</b>Process</a>
+    <a href="#about"><b>06</b>Max</a>
+    <a href="#price"><b>07</b>Pricing</a>
+    <a href="#faq"><b>08</b>FAQ</a>
+    <a class="btn big menu-cta" href="https://tally.so/r/jaVYZa">Get a free edit</a>
+    <p class="menu-foot">@deluxereelsonly · $10 an edit · first one free</p>
+  </nav>
+</div>
 <!-- slide-over: the free-edit form, without leaving the page -->
 <div class="sheet" id="sheet" aria-hidden="true">
   <div class="sheet-bg" data-close></div>
@@ -1274,6 +1306,22 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   /* ---------- stage phone plays only when on screen ---------- */
 
 
+
+  /* ---------- mobile menu ---------- */
+  const burger = $('#burger'), menu = $('#menu');
+  function setMenu(open) {
+    burger.classList.toggle('on', open); burger.setAttribute('aria-expanded', open);
+    if (open) { menu.classList.add('open'); requestAnimationFrame(() => menu.classList.add('in')); $$('.menu-in a:not(.btn)').forEach((a, i) => a.style.transitionDelay = (i * 45) + 'ms'); document.body.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop(); }
+    else { menu.classList.remove('in'); setTimeout(() => menu.classList.remove('open'), 300); document.body.style.overflow = ''; window.__lenis && window.__lenis.start(); }
+    menu.setAttribute('aria-hidden', !open);
+  }
+  burger.addEventListener('click', () => setMenu(!burger.classList.contains('on')));
+  $$('.menu-in a').forEach(a => a.addEventListener('click', e => {
+    setMenu(false);
+    const href = a.getAttribute('href');
+    if (href.startsWith('#')) { e.preventDefault(); const el = $(href); setTimeout(() => { if (window.__lenis) window.__lenis.scrollTo(el, {offset: -60, duration: 1}); else el.scrollIntoView({behavior: 'smooth'}); }, 320); }
+  }));
+
   /* ---------- the form, as a slide-over ---------- */
   const sheet = $('#sheet'), tallyFrame = $('iframe', sheet);
   let tallyLoaded = false;
@@ -1294,7 +1342,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   }
   function closeLb() { lbV.pause(); lb.classList.remove('in'); lb.setAttribute('aria-hidden', 'true'); setTimeout(() => { lb.classList.remove('open'); lbV.removeAttribute('src'); lbV.load(); }, 350); document.body.style.overflow = ''; window.__lenis && window.__lenis.start(); }
   $$('[data-lbclose]', lb).forEach(el => el.addEventListener('click', closeLb));
-  addEventListener('keydown', e => { if (e.key === 'Escape') { closeSheet(); closeLb(); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { closeSheet(); closeLb(); setMenu(false); } });
 
   /* ---------- hero: tap for sound ---------- */
   const heroV = $('#heroPhone video'), heroSnd = $('#heroSnd');
