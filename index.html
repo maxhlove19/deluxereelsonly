@@ -1445,6 +1445,20 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     e.preventDefault(); lenis.scrollTo(el, {offset: -70, duration: 1.2});
   }));
 })();
+
+/* niche entry: ?for=realtors|coaches|founders — same page, matching reel first */
+(function(){
+  var f=new URLSearchParams(location.search).get('for');
+  var M={
+    realtors:{tag:'For realtors',line:'Listing tours and market updates, cut so people stop scrolling.',reels:['reel3']},
+    coaches:{tag:'For coaches',line:'Your advice clips, cut so the point lands in the first second.',reels:['reel4','reel2']},
+    founders:{tag:'For founders',line:'Product and founder clips, cut so the offer is impossible to miss.',reels:['reel5','reel1']}
+  };
+  var m=M[f]; if(!m) return;
+  var eb=document.querySelector('#hero .eyebrow'); if(eb) eb.textContent=m.tag+' · Max Love · since 2016';
+  var sub=document.querySelector('#hero .sub'); if(sub){ var b=document.createElement('b'); b.textContent=m.line+' '; sub.insertBefore(b, sub.firstChild); }
+  var rail=document.querySelector('.rail'); if(rail){ m.reels.slice().reverse().forEach(function(r){ var v=rail.querySelector('video[src="media/'+r+'.mp4"]'); var c=v&&v.closest('.card'); if(c) rail.insertBefore(c, rail.firstChild); }); }
+})();
 </script>
 </body>
 </html>
