@@ -233,7 +233,7 @@ h3{font-size:clamp(22px,2.2vw,30px);margin:0 0 10px}
 /* =========================================================
    SECTIONS
    ========================================================= */
-section{padding:130px 0;position:relative}
+section{padding:104px 0;position:relative}
 .panel{
   background:linear-gradient(180deg,var(--ink-2),rgba(17,17,20,.6));
   border:1px solid var(--line);border-radius:28px;position:relative;overflow:hidden;
@@ -241,9 +241,9 @@ section{padding:130px 0;position:relative}
 .panel::before{content:"";position:absolute;inset:0;border-radius:28px;padding:1px;background:linear-gradient(160deg,rgba(244,241,236,.14),transparent 40%,transparent 70%,rgba(232,97,28,.25));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 
 /* ---- WORK: the stage (container scroll) + rail ---- */
-#work{padding-top:150px}
+#work{padding-top:120px}
 .stage{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:110px;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:84px;
 }
 .stage .device{display:flex;justify-content:center;perspective:1600px}
 .stage .phone{width:330px;transform:rotateX(18deg) scale(.84);transform-origin:center 20%;transition:none}
@@ -293,6 +293,19 @@ section{padding:130px 0;position:relative}
 .pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
 .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-2);border:1px solid var(--line-2);border-radius:99px;padding:5px 10px}
 
+
+/* ---- what's in every edit: strip ---- */
+.inside-strip{list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.inside-strip li{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;display:grid;gap:4px}
+.inside-strip b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--orange);font-weight:400}
+.inside-strip span{font-weight:600;font-size:16px;letter-spacing:-.01em}
+.inside-strip i{font-style:normal;color:var(--mute);font-size:13.5px;line-height:1.45}
+.clients{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.client{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.client b{display:block;font-weight:600;font-size:16px;margin-bottom:4px}
+.client i{display:block;font-style:normal;color:var(--mute);font-size:14px;line-height:1.45}
+@media(max-width:860px){.inside-strip{grid-template-columns:1fr 1fr;gap:10px}.clients{grid-template-columns:1fr;gap:10px}}
+
 /* ---- PROOF: numbers tick up ---- */
 #proof .panel{padding:64px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px}
@@ -305,30 +318,6 @@ section{padding:130px 0;position:relative}
 .stat.hi .bar i{background:linear-gradient(90deg,var(--orange),var(--orange-2));box-shadow:0 0 16px rgba(232,97,28,.6)}
 .stat.in .bar i{width:var(--w)}
 .note{margin:36px 0 0;color:var(--mute);font-size:14.5px;max-width:70ch;line-height:1.6}
-
-/* ---- INSIDE: tabs ---- */
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.tablist{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.tab{
-  text-align:left;background:transparent;border:1px solid transparent;border-radius:18px;padding:20px 22px;
-  cursor:pointer;transition:background .25s,border-color .25s;display:grid;grid-template-columns:30px 1fr;gap:16px;align-items:start;
-}
-.tab .n{font-family:var(--mono);font-size:11.5px;color:var(--mute);padding-top:5px;letter-spacing:.1em}
-.tab h4{margin:0 0 4px;font-size:19px;font-weight:600;letter-spacing:-.01em}
-.tab p{margin:0;color:var(--mute);font-size:15px;line-height:1.5;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s var(--ease),opacity .3s,margin .3s}
-.tab.on{background:var(--ink-2);border-color:var(--line)}
-.tab.on p{max-height:120px;opacity:1;margin-top:6px}
-.tab.on .n{color:var(--orange)}
-.tab .prog{grid-column:2;height:2px;background:var(--ink-3);border-radius:99px;margin-top:14px;overflow:hidden;opacity:0}
-.tab.on .prog{opacity:1}
-.tab .prog i{display:block;height:100%;width:0;background:var(--orange)}
-.tab.on .prog i{animation:tabfill var(--tab-ms,4200ms) linear forwards}
-@keyframes tabfill{to{width:100%}}
-.tabs .device{display:flex;justify-content:center;perspective:1400px}
-.tabs .phone{width:300px;transform:rotateY(12deg) rotateX(3deg)}
-.tabs .screen img{position:absolute;inset:0;opacity:0;transition:opacity .5s var(--ease),transform .7s var(--ease);transform:scale(1.04)}
-.tabs .screen img.on{opacity:1;transform:none}
-
 
 /* ---- ANATOMY: scrub the edit ---- */
 .anat{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
@@ -380,7 +369,7 @@ section{padding:130px 0;position:relative}
 .step p{margin:0;color:var(--paper-2);max-width:54ch;font-size:17px}
 .step .ico{width:110px;height:110px;border-radius:24px;background:var(--ink-3);border:1px solid var(--line);display:grid;place-items:center}
 .step .ico svg{width:46px;height:46px;stroke:var(--paper);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.stack-spacer{height:30vh}
+.stack-spacer{height:16vh}
 
 /* ---- ABOUT ---- */
 #about .panel{padding:0;display:grid;grid-template-columns:.9fr 1.1fr;min-height:520px}
@@ -472,7 +461,7 @@ details .ans{overflow:hidden;transition:height .45s var(--ease)}
 details[open] summary{color:var(--paper)}
 
 /* ---- END: the layering comes back ---- */
-#end{padding:180px 0;text-align:center;overflow:hidden;isolation:isolate}
+#end{padding:140px 0;text-align:center;overflow:hidden;isolation:isolate}
 #end .layer{inset:-20% 0}
 #end h2{font-size:clamp(46px,7.4vw,110px);margin-bottom:22px}
 #end .lede{margin:0 auto 40px;text-align:center}
@@ -583,13 +572,6 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   .stats{grid-template-columns:1fr;gap:26px;margin-top:24px}
   .stat b{font-size:64px}
 
-  .tabs{grid-template-columns:1fr;gap:30px}
-  .tabs .device{order:-1}
-  .tabs .phone{width:min(60vw,240px);transform:rotateY(6deg)}
-  .tablist{flex-direction:row;overflow-x:auto;gap:8px;margin:0 -20px;padding:0 20px 8px;scrollbar-width:none;scroll-snap-type:x mandatory}
-  .tablist::-webkit-scrollbar{display:none}
-  .tab{flex:0 0 82vw;max-width:360px;scroll-snap-align:start;grid-template-columns:26px 1fr;padding:18px}
-  .tab p{max-height:120px;opacity:1;margin-top:6px}
 
   .anat{grid-template-columns:1fr;gap:26px}
   .anat .phone{width:min(62vw,250px);transform:none}
@@ -641,8 +623,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   </a>
   <ul>
     <li><a href="#work" data-sec="work">Work</a></li>
-    <li><a href="#proof" data-sec="proof">Proof</a></li>
-    <li><a href="#inside" data-sec="inside">What's inside</a></li>
+    <li><a href="#proof" data-sec="proof">Results</a></li>
     <li><a href="#anatomy" data-sec="anatomy">Anatomy</a></li>
     <li><a href="#process" data-sec="process">Process</a></li>
     <li><a href="#about" data-sec="about">Max</a></li>
@@ -804,6 +785,13 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     </div>
     <p class="note rv" style="margin:10px 0 6px">Straight answer on the footage: the ad and the two before/afters on the right are sample clips, so no one in them is a client. The e-commerce and coaching cuts are real footage. Every edit is real either way.</p>
     <div class="rail-nav" aria-hidden="true"><button class="rail-btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><span class="rail-hint">drag, scroll, or use the arrows</span><button class="rail-btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+
+    <ul class="inside-strip rv" aria-label="What's in every edit">
+      <li><b>01</b><span>The hook</span><i>strongest sentence first, on screen</i></li>
+      <li><b>02</b><span>Captions that match</span><i>transcribed from the audio, word for word</i></li>
+      <li><b>03</b><span>Graphics from the sentence</span><i>a gap drawn as a gap, a number that counts</i></li>
+      <li><b>04</b><span>Numbers you can feel</span><i>money and results get the most motion</i></li>
+    </ul>
   </div>
 </section>
 
@@ -812,7 +800,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   <div class="wrap">
     <div class="panel rv">
       <div style="padding:0">
-        <p class="eyebrow">One recording, two cuts</p>
+        <p class="eyebrow">Results</p>
         <h2 class="display">Same words.<br><span class="o num" data-to="5" data-suffix="×">0×</span> the views.</h2>
         <p class="lede" style="margin-bottom:0">A coaching client posted her own cut of a recording. I cut the same recording, she posted that too. Nothing changed except the edit.</p>
       </div>
@@ -821,51 +809,13 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="stat" style="--w:20%"><b class="num" data-to="78">0</b><i>Her own cut of the recording</i><div class="bar"><i></i></div></div>
         <div class="stat hi" style="--w:100%"><b class="num" data-to="388">0</b><i>My cut of the same recording</i><div class="bar"><i></i></div></div>
       </div>
-      <p class="note rv"><b style="color:var(--paper)">Paying clients so far:</b> a Baptist church, a Calvary Chapel, and an insurance sales coach. Two things are small here and I'd rather say so than have you find out: it's one video, and the channel is early. I'm showing it because it's the honest kind of proof — a controlled comparison on the same footage — not because 388 is a big number. When there's more, this section gets updated, not inflated.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INSIDE ============ -->
-<section id="inside">
-  <div class="wrap">
-    <p class="eyebrow rv">What's inside every edit</p>
-    <h2 class="display rv">Four things,<br>every <span class="o">single</span> time.</h2>
-    <div class="tabs">
-      <div class="tablist rv" role="tablist" aria-label="What's inside every edit">
-        <button class="tab on" role="tab" aria-selected="true" data-img="hook">
-          <span class="n">01</span>
-          <span><h4>The hook</h4><p>Whatever the strongest sentence in the footage is, it goes first — on screen, on a card, before the viewer's thumb can move.</p></span>
-          <span class="prog"><i></i></span>
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-img="captions">
-          <span class="n">02</span>
-          <span><h4>Captions that match</h4><p>Transcribed word by word from the actual audio, not auto-generated. If it's on screen, it's what was said, when it was said.</p></span>
-          <span class="prog"><i></i></span>
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-img="graphics">
-          <span class="n">03</span>
-          <span><h4>Graphics built from the sentence</h4><p>A gap gets drawn as a gap. A question draws its own question mark. A number counts. The graphic means what the line means.</p></span>
-          <span class="prog"><i></i></span>
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-img="numbers">
-          <span class="n">04</span>
-          <span><h4>Numbers you can feel</h4><p>Figures don't just appear — they climb, get underlined, get boxed. Money and results are the parts people remember, so they get the most motion.</p></span>
-          <span class="prog"><i></i></span>
-        </button>
+      <p class="note">Two things are small here and I'd rather say so than have you find out: it's one video, and the channel is early. I'm showing it because it's the honest kind of proof — a controlled comparison on the same footage — not because 388 is a big number. When there's more, this section gets updated, not inflated.</p>
+      <div class="clients">
+        <div class="client"><b>A Baptist church</b><i>Short-form clips from Sunday services</i></div>
+        <div class="client"><b>A Calvary Chapel</b><i>Short-form clips from Sunday services</i></div>
+        <div class="client"><b>An insurance sales coach</b><i>Reels cut from her recordings — the 388-view cut above is hers</i></div>
       </div>
-      <div class="device rv">
-        <div class="phone">
-          <div class="screen">
-            <div class="notch"></div>
-            <div class="glare"></div>
-            <img class="on" data-img="hook" loading="lazy" src="media/tab_hook.jpg" alt="Frame from an edit: a drawn product with the number 12,000 landing on it">
-            <img data-img="captions" loading="lazy" src="media/tab_captions.jpg" alt="Frame from an edit: a single matched caption word on a coach">
-            <img data-img="graphics" loading="lazy" src="media/tab_graphics.jpg" alt="Frame from an edit: a bar chart drawing itself, labelled the gap">
-            <img data-img="numbers" loading="lazy" src="media/tab_numbers.jpg" alt="Frame from an edit: 6 figures in pure profit on a green card">
-          </div>
-        </div>
-      </div>
+      <p class="note" style="margin-top:18px">Paying clients so far. Names and quotes go up the moment each of them says yes — nothing on this page is invented, and that includes the testimonials it doesn't have yet.</p>
     </div>
   </div>
 </section>
@@ -1110,13 +1060,12 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 <div class="menu" id="menu" aria-hidden="true">
   <nav class="menu-in" aria-label="Sections">
     <a href="#work"><b>01</b>Work</a>
-    <a href="#proof"><b>02</b>Proof</a>
-    <a href="#inside"><b>03</b>What's inside</a>
-    <a href="#anatomy"><b>04</b>Anatomy</a>
-    <a href="#process"><b>05</b>Process</a>
-    <a href="#about"><b>06</b>Max</a>
-    <a href="#price"><b>07</b>Pricing</a>
-    <a href="#faq"><b>08</b>FAQ</a>
+    <a href="#proof"><b>02</b>Results</a>
+    <a href="#anatomy"><b>03</b>Anatomy</a>
+    <a href="#process"><b>04</b>Process</a>
+    <a href="#about"><b>05</b>Max</a>
+    <a href="#price"><b>06</b>Pricing</a>
+    <a href="#faq"><b>07</b>FAQ</a>
     <a class="btn big menu-cta" href="https://tally.so/r/jaVYZa">Get a free edit</a>
     <p class="menu-foot">@deluxereelsonly · $10 an edit · first one free</p>
   </nav>
@@ -1428,20 +1377,6 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     });
   });
 
-  /* ---------- tabs: click or auto-advance ---------- */
-  const tabs = $$('.tab'), shots = $$('.tabs .screen img');
-  let ti = 0, timer, auto = true;
-  function show(i) {
-    ti = i;
-    tabs.forEach((t, k) => { t.classList.toggle('on', k === i); t.setAttribute('aria-selected', k === i); });
-    shots.forEach(s => s.classList.toggle('on', s.dataset.img === tabs[i].dataset.img));
-    /* restart the progress bar */
-    const bar = $('.prog i', tabs[i]); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
-    if (mobile()) tabs[i].scrollIntoView({behavior:'smooth', block:'nearest', inline:'start'});
-  }
-  function loop() { clearInterval(timer); if (auto && !reduce) timer = setInterval(() => show((ti + 1) % tabs.length), 4200); }
-  tabs.forEach((t, i) => t.addEventListener('click', () => { auto = false; clearInterval(timer); show(i); }));
-  new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? loop() : clearInterval(timer)), {threshold:.4}).observe($('.tabs'));
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
