@@ -316,6 +316,16 @@ section{padding:104px 0;position:relative}
 .client i{display:block;font-style:normal;color:var(--mute);font-size:14px;line-height:1.45}
 @media(max-width:860px){.inside-strip{grid-template-columns:1fr 1fr;gap:10px}.clients{grid-template-columns:1fr;gap:10px}}
 
+
+/* ---- real client quotes (hidden until the first one is approved) ---- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.quote{margin:0;background:var(--ink);border:1px solid var(--line);border-radius:18px;padding:22px 22px 18px;position:relative}
+.quote::before{content:"\201C";position:absolute;top:6px;right:18px;font-family:var(--display);font-size:64px;line-height:1;color:var(--orange);opacity:.5}
+.quote blockquote{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--paper)}
+.quote figcaption b{display:block;font-weight:600;font-size:14.5px}
+.quote figcaption i{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+@media(max-width:860px){.quotes{grid-template-columns:1fr}}
+
 /* ---- PROOF: numbers tick up ---- */
 #proof .panel{padding:64px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px}
@@ -847,6 +857,11 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="client"><b>An insurance sales coach</b><i>Reels cut from her recordings — the 388-view cut above is hers</i></div>
       </div>
       <p class="note" style="margin-top:18px">Paying clients so far. Names and quotes go up the moment each of them says yes — nothing on this page is invented, and that includes the testimonials it doesn't have yet.</p>
+      <!-- Real quotes only. Each entry: the client's own words verbatim, name/org exactly as approved, date approved.
+           Unhide by removing `hidden` once the first one is in. -->
+      <div class="quotes" id="quotes" hidden>
+        <!-- <figure class="quote"><blockquote>…their words…</blockquote><figcaption><b>Name</b><i>Org · approved 2026-09-xx</i></figcaption></figure> -->
+      </div>
     </div>
   </div>
 </section>
