@@ -15,7 +15,9 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://tally.so">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,700..900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
    TOKENS
@@ -677,7 +679,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <div class="stage">
       <div class="device">
         <div class="phone" id="stagePhone">
-          <div class="screen cmp" id="cmp" style="--x:52%">
+          <div class="screen cmp" id="cmp" style="--x:52%" tabindex="0" role="slider" aria-label="Compare raw and edited" aria-valuemin="0" aria-valuemax="100" aria-valuenow="52">
             <div class="notch"></div>
             <div class="glare"></div>
             <video class="cmp-raw" src="media/cmp_raw.mp4" poster="media/cmp_raw.jpg" muted loop playsinline preload="metadata" aria-label="Raw clip"></video>
@@ -827,10 +829,10 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <div class="screen">
             <div class="notch"></div>
             <div class="glare"></div>
-            <img class="on" data-img="hook" src="media/tab_hook.jpg" alt="Frame from an edit: a drawn product with the number 12,000 landing on it">
-            <img data-img="captions" src="media/tab_captions.jpg" alt="Frame from an edit: a single matched caption word on a coach">
-            <img data-img="graphics" src="media/tab_graphics.jpg" alt="Frame from an edit: a bar chart drawing itself, labelled the gap">
-            <img data-img="numbers" src="media/tab_numbers.jpg" alt="Frame from an edit: 6 figures in pure profit on a green card">
+            <img class="on" data-img="hook" loading="lazy" src="media/tab_hook.jpg" alt="Frame from an edit: a drawn product with the number 12,000 landing on it">
+            <img data-img="captions" loading="lazy" src="media/tab_captions.jpg" alt="Frame from an edit: a single matched caption word on a coach">
+            <img data-img="graphics" loading="lazy" src="media/tab_graphics.jpg" alt="Frame from an edit: a bar chart drawing itself, labelled the gap">
+            <img data-img="numbers" loading="lazy" src="media/tab_numbers.jpg" alt="Frame from an edit: 6 figures in pure profit on a green card">
           </div>
         </div>
       </div>
@@ -905,7 +907,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <div class="panel rv">
       <div class="about-photo">
         <span class="tag">Taking new clients</span>
-        <img src="media/max.png" alt="Max Love" width="520" height="520">
+        <img src="media/max.jpg" alt="Max Love" width="520" height="520" loading="lazy" decoding="async">
       </div>
       <div class="about-copy">
         <p class="eyebrow">The editor</p>
@@ -1203,6 +1205,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   cmp.addEventListener('pointerdown', e => { cmpIdle = false; cmp.classList.add('grab'); cmp.setPointerCapture(e.pointerId); cmpFrom(e); });
   cmp.addEventListener('pointermove', e => { if (cmp.classList.contains('grab')) cmpFrom(e); });
   ['pointerup','pointercancel'].forEach(t => cmp.addEventListener(t, () => cmp.classList.remove('grab')));
+  cmp.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); cmpIdle = false; setX(cx + (e.key === 'ArrowRight' ? 4 : -4)); cmp.setAttribute('aria-valuenow', Math.round(cx)); } });
   (function sway(now) { if (cmpIdle && !reduce) setX(52 + Math.sin((now - cmpT0) / 1400) * 9); requestAnimationFrame(sway); })(performance.now());
   new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { vRaw.play().catch(()=>{}); vEd.play().catch(()=>{}); } else { vRaw.pause(); vEd.pause(); }
