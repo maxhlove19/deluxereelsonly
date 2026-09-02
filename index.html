@@ -9,6 +9,10 @@
 <meta property="og:description" content="$10 an edit. First one's free.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0A0A0C">
+<meta property="og:image" content="https://maxhlove19.github.io/deluxereelsonly/media/og.jpg">
+<meta property="og:url" content="https://deluxereelsonly.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -120,6 +124,8 @@ h3{font-size:clamp(22px,2.2vw,30px);margin:0 0 10px}
   position:absolute;left:0;right:0;bottom:-1px;height:2px;background:transparent;
 }
 .track i{position:absolute;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));box-shadow:0 0 12px rgba(232,97,28,.8);transition:width .08s linear}
+.track b{position:absolute;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--ink-3);border:1px solid var(--line-2);transform:translateX(-50%);transition:background .3s,border-color .3s,transform .3s}
+.track b.on{background:var(--orange);border-color:var(--orange);transform:translateX(-50%) scale(1.35);box-shadow:0 0 10px rgba(232,97,28,.9)}
 @media(max-width:860px){#nav{gap:14px;padding:0 18px}#nav ul{display:none}#nav .btn{margin-left:auto}}
 
 /* =========================================================
@@ -393,7 +399,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 /* =========================================================
    REVEAL
    ========================================================= */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .rv.in{opacity:1;transform:none}
 .rv-l{opacity:0;transform:translateX(-40px)}.rv-r{opacity:0;transform:translateX(40px)}
 .rv-l,.rv-r{transition:opacity .6s var(--ease),transform .6s var(--ease)}
@@ -488,7 +494,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <li><a href="#faq" data-sec="faq">FAQ</a></li>
   </ul>
   <a class="btn" href="https://tally.so/r/jaVYZa">Get a free edit</a>
-  <div class="track" aria-hidden="true"><i id="trackFill"></i></div>
+  <div class="track" aria-hidden="true"><i id="trackFill"></i><span id="trackDots"></span></div>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -888,7 +894,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   $$('.num[data-to]').forEach(el => el.closest('#hero') ? setTimeout(() => count(el), 350) : cio.observe(el));
 
   /* ---------- reveal ---------- */
-  const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), {threshold:.05, rootMargin:'0px 0px 12% 0px'});
+  const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), {threshold:.01, rootMargin:'0px 0px 22% 0px'});
   $$('.rv,.rv-l,.rv-r,.stat').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 60 + 'ms'; rio.observe(el); });
 
   /* ---------- active section in nav ---------- */
@@ -897,6 +903,20 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.sec === e.target.id));
   }), {rootMargin:'-40% 0px -55% 0px'});
   $$('section[id]').forEach(s => sio.observe(s));
+
+  /* ---------- section dots on the scroll line ---------- */
+  const secs = $$('section[id]');
+  const dotsWrap = $('#trackDots');
+  function placeDots() {
+    const docH = document.documentElement.scrollHeight - innerHeight;
+    dotsWrap.innerHTML = '';
+    secs.forEach(sec => { const b = document.createElement('b'); b.dataset.sec = sec.id; b.style.left = (Math.min(1, sec.offsetTop / docH) * 100) + '%'; dotsWrap.appendChild(b); });
+  }
+  placeDots(); addEventListener('resize', placeDots); addEventListener('load', placeDots);
+  const sio2 = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) $$('#trackDots b').forEach(b => b.classList.toggle('on', b.dataset.sec === e.target.id));
+  }), {rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s => sio2.observe(s));
 
   /* ---------- one scroll loop ---------- */
   const nav = $('#nav'), fill = $('#trackFill'), dock = $('#dock');
@@ -990,6 +1010,20 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   function loop() { clearInterval(timer); if (auto && !reduce) timer = setInterval(() => show((ti + 1) % tabs.length), 4200); }
   tabs.forEach((t, i) => t.addEventListener('click', () => { auto = false; clearInterval(timer); show(i); }));
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? loop() : clearInterval(timer)), {threshold:.4}).observe($('.tabs'));
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !window.Lenis) return;
+  document.documentElement.style.scrollBehavior = 'auto';
+  const lenis = new Lenis({lerp: .09, wheelMultiplier: 1, smoothWheel: true});
+  const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const el = document.querySelector(a.getAttribute('href')); if (!el) return;
+    e.preventDefault(); lenis.scrollTo(el, {offset: -70, duration: 1.2});
+  }));
 })();
 </script>
 </body>
