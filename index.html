@@ -448,6 +448,41 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 .dock.show{transform:none}
 .dock .btn{width:100%;justify-content:center;padding:18px;font-size:16px;box-shadow:0 20px 40px -14px rgba(232,97,28,.7)}
 
+
+/* ---- sheet (form slide-over) ---- */
+.sheet{position:fixed;inset:0;z-index:200;display:none}
+.sheet.open{display:block}
+.sheet-bg{position:absolute;inset:0;background:rgba(10,10,12,.66);backdrop-filter:blur(6px);opacity:0;transition:opacity .35s}
+.sheet.in .sheet-bg{opacity:1}
+.sheet-panel{position:absolute;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--paper);color:var(--ink);padding:56px 48px 40px;overflow:auto;transform:translateX(100%);transition:transform .5s var(--ease);box-shadow:-40px 0 120px rgba(0,0,0,.6)}
+.sheet.in .sheet-panel{transform:none}
+.sheet-panel .eyebrow{color:#7A7770}
+.sheet-panel h3{font-size:clamp(36px,4.5vw,54px);color:var(--ink);margin-bottom:12px}
+.sheet-sub{color:#5B5852;margin:0 0 22px;max-width:44ch}
+.sheet-form{border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,.08);padding:14px 16px 6px;min-height:200px}
+.sheet-alt{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7A7770}
+.sheet-x,.lb-x{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(0,0,0,.12);background:#fff;color:var(--ink);font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:transform .2s}
+.sheet-x:hover,.lb-x:hover{transform:rotate(90deg)}
+@media(max-width:860px){.sheet-panel{top:auto;height:92svh;width:100%;border-radius:24px 24px 0 0;padding:44px 22px 30px;transform:translateY(100%)}}
+/* ---- lightbox ---- */
+.lb{position:fixed;inset:0;z-index:210;display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb-bg{position:absolute;inset:0;background:rgba(10,10,12,.8);backdrop-filter:blur(10px);opacity:0;transition:opacity .3s}
+.lb.in .lb-bg{opacity:1}
+.lb-card{position:relative;transform:scale(.92);opacity:0;transition:transform .45s var(--ease),opacity .3s}
+.lb.in .lb-card{transform:none;opacity:1}
+.lb .phone{width:min(360px,80vw,calc(74svh * 9 / 19.2))}
+.lb .phone video{width:100%;height:100%;object-fit:cover;background:#000}
+.lb-cap{text-align:center;color:var(--paper-2);font-size:14.5px;margin:18px 0 0;max-width:36ch;margin-inline:auto}
+.lb-x{top:-8px;right:-56px;background:var(--ink-3);color:var(--paper);border-color:var(--line-2)}
+@media(max-width:860px){.lb-x{top:-56px;right:0}}
+/* ---- hero sound pill ---- */
+.snd{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:6;display:inline-flex;align-items:center;gap:8px;background:rgba(10,10,12,.62);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:99px;padding:9px 14px 9px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.snd:hover{background:rgba(232,97,28,.9)}
+.snd svg{width:16px;height:16px}
+.snd.on .w{display:none}
+.marquee:hover div{animation-play-state:paused}
+
 /* =========================================================
    REVEAL
    ========================================================= */
@@ -532,6 +567,9 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 }
 </style>
 <noscript><style>.rv,.rv-l,.rv-r,.sub,.cta-row,.tiny,.chip{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Deluxe Reels","serviceType":"Short-form video editing","provider":{"@type":"Person","name":"Max Love"},"url":"https://deluxereelsonly.com/","description":"Short-form video editing. $10 an edit. 30 for $300, 50 for $500, or a full-time editor for $750 a month. First edit free.","offers":[{"@type":"Offer","name":"Starter pack","price":"300","priceCurrency":"USD","description":"30 edits"},{"@type":"Offer","name":"The pack","price":"500","priceCurrency":"USD","description":"50 edits plus 5 free"},{"@type":"Offer","name":"Full-time editor","price":"750","priceCurrency":"USD","description":"Unlimited edits, month to month"}]}
+</script>
 </head>
 <body>
 
@@ -583,6 +621,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <div class="notch"></div>
           <div class="glare"></div>
           <video src="media/ad.mp4" poster="media/ad.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Deluxe Reels offer ad, before and after"></video>
+          <button class="snd" id="heroSnd" aria-label="Turn sound on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="w" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span>tap for sound</span></button>
         </div>
       </div>
       <div class="chips" aria-hidden="true">
@@ -774,7 +813,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   <div class="wrap">
     <p class="eyebrow rv">Anatomy of an edit</p>
     <h2 class="display rv">Fifteen seconds,<br>four <span class="o">events</span>.</h2>
-    <p class="lede rv">This is the real estate reel from the rail, opened up. Scrub the timeline, tap a marker, watch the words light up as they're spoken. Every caption is matched to the audio, not guessed.</p>
+    <p class="lede rv">This is the real estate reel from the rail (sample footage, real edit), opened up. Scrub the timeline, tap a marker, watch the words light up as they're spoken. Every caption is matched to the audio, not guessed.</p>
     <div class="anat rv">
       <div class="device">
         <div class="phone">
@@ -874,7 +913,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
       </div>
       <div class="tier hot">
         <div class="tier-top"><span class="tier-name">The pack</span><span class="tier-tag">Most people start here</span></div>
-        <div class="tier-amt"><b>$<span class="num" data-to="500">0</span></b><i>one-time · 50 edits + 5 on the house</i></div>
+        <div class="tier-amt"><b>$<span class="num" data-to="500">0</span></b><i>one-time · 55 edits · works out to $9.09 each</i></div>
         <ul class="inc">
           <li>50 finished edits — plus 5 free, so 55</li>
           <li>Hooks, matched captions, motion graphics, sound</li>
@@ -967,6 +1006,27 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   </div>
 </footer>
 
+<!-- slide-over: the free-edit form, without leaving the page -->
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <aside class="sheet-panel" role="dialog" aria-modal="true" aria-label="Get a free edit">
+    <button class="sheet-x" data-close aria-label="Close">&times;</button>
+    <p class="eyebrow">Get a free edit</p>
+    <h3 class="display">Send one video.</h3>
+    <p class="sheet-sub">You'll have it back cut in 48 hours. No card, nothing to cancel, and you decide after you've seen it.</p>
+    <div class="sheet-form"><iframe data-tally-src="https://tally.so/embed/jaVYZa?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="430" frameborder="0" marginheight="0" marginwidth="0" title="Get a free edit"></iframe></div>
+    <a class="sheet-alt" href="https://tally.so/r/jaVYZa" target="_blank" rel="noopener">Open the form in a new tab instead</a>
+  </aside>
+</div>
+<!-- lightbox: a reel, big, with sound -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-bg" data-lbclose></div>
+  <div class="lb-card" role="dialog" aria-modal="true" aria-label="Reel">
+    <button class="lb-x" data-lbclose aria-label="Close">&times;</button>
+    <div class="phone"><div class="screen"><div class="notch"></div><video id="lbV" controls playsinline preload="metadata"></video></div></div>
+    <p class="lb-cap" id="lbCap"></p>
+  </div>
+</div>
 <div class="dock" id="dock"><a class="btn" href="https://tally.so/r/jaVYZa">Get a free edit — it's actually free</a></div>
 
 <script>
@@ -1160,6 +1220,33 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 
   /* ---------- stage phone plays only when on screen ---------- */
 
+
+  /* ---------- the form, as a slide-over ---------- */
+  const sheet = $('#sheet'), tallyFrame = $('iframe', sheet);
+  let tallyLoaded = false;
+  function openSheet() {
+    if (!tallyLoaded) { tallyFrame.src = tallyFrame.dataset.tallySrc; const sc = document.createElement('script'); sc.src = 'https://tally.so/widgets/embed.js'; document.body.appendChild(sc); tallyLoaded = true; }
+    sheet.classList.add('open'); requestAnimationFrame(() => sheet.classList.add('in')); sheet.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop(); $('.sheet-x', sheet).focus();
+  }
+  function closeSheet() { sheet.classList.remove('in'); sheet.setAttribute('aria-hidden', 'true'); setTimeout(() => sheet.classList.remove('open'), 500); document.body.style.overflow = ''; window.__lenis && window.__lenis.start(); }
+  $$('a[href="https://tally.so/r/jaVYZa"]').forEach(a => a.addEventListener('click', e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openSheet(); }));
+  $$('[data-close]', sheet).forEach(el => el.addEventListener('click', closeSheet));
+
+  /* ---------- reel lightbox ---------- */
+  const lb = $('#lb'), lbV = $('#lbV'), lbCap = $('#lbCap');
+  function openLb(src, cap) {
+    lbV.src = src; lbCap.textContent = cap; lb.classList.add('open'); requestAnimationFrame(() => lb.classList.add('in')); lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop(); lbV.muted = false; lbV.play().catch(()=>{});
+  }
+  function closeLb() { lbV.pause(); lb.classList.remove('in'); lb.setAttribute('aria-hidden', 'true'); setTimeout(() => { lb.classList.remove('open'); lbV.removeAttribute('src'); lbV.load(); }, 350); document.body.style.overflow = ''; window.__lenis && window.__lenis.start(); }
+  $$('[data-lbclose]', lb).forEach(el => el.addEventListener('click', closeLb));
+  addEventListener('keydown', e => { if (e.key === 'Escape') { closeSheet(); closeLb(); } });
+
+  /* ---------- hero: tap for sound ---------- */
+  const heroV = $('#heroPhone video'), heroSnd = $('#heroSnd');
+  heroSnd.addEventListener('click', () => { heroV.muted = !heroV.muted; heroSnd.classList.toggle('on', !heroV.muted); $('span', heroSnd).textContent = heroV.muted ? 'tap for sound' : 'mute'; heroSnd.setAttribute('aria-label', heroV.muted ? 'Turn sound on' : 'Mute'); if (heroV.paused) heroV.play(); });
+
   /* ---------- cards: click plays with sound, one at a time ---------- */
   const cards = $$('.card');
   function stopAll(except) {
@@ -1167,7 +1254,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   }
   cards.forEach(c => {
     const v = $('video', c), snd = $('.sound', c);
-    $('.play', c).addEventListener('click', () => { stopAll(c); v.muted = false; v.play(); c.classList.add('playing'); snd.textContent = 'MUTE'; });
+    $('.play', c).addEventListener('click', () => { stopAll(c); v.pause(); openLb(v.getAttribute('src'), $('h3', c).textContent + ' — ' + $('p', c).textContent); });
     v.addEventListener('click', () => { v.pause(); c.classList.remove('playing'); });
     snd.addEventListener('click', ev => { ev.stopPropagation(); v.muted = !v.muted; snd.textContent = v.muted ? 'SOUND ON' : 'MUTE'; });
     v.addEventListener('ended', () => c.classList.remove('playing'));
@@ -1210,7 +1297,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !window.Lenis) return;
   document.documentElement.style.scrollBehavior = 'auto';
-  const lenis = new Lenis({lerp: .09, wheelMultiplier: 1, smoothWheel: true});
+  const lenis = new Lenis({lerp: .09, wheelMultiplier: 1, smoothWheel: true}); window.__lenis = lenis;
   const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
   requestAnimationFrame(raf);
   document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
