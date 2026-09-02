@@ -447,6 +447,19 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px rgba(
 .rail-btn svg{width:18px;height:18px}
 @media(max-width:860px){.rail-nav{justify-content:flex-start;margin-top:10px}.rail-btn{display:none}}
 
+
+/* ---- guarantee ---- */
+.guarantee{margin-top:22px;display:grid;grid-template-columns:120px 1fr;gap:30px;align-items:start;background:linear-gradient(135deg,#151519,#111114);border:1px solid rgba(232,97,28,.35);border-radius:24px;padding:36px 40px}
+.g-mark{width:96px;height:96px;border-radius:24px;background:rgba(232,97,28,.12);color:var(--orange);display:grid;place-items:center}
+.g-mark svg{width:54px;height:54px}
+.guarantee h3{font-size:clamp(24px,2.8vw,34px);margin:0 0 16px}
+.g-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
+.g-list li{position:relative;padding-left:22px;color:var(--paper-2);font-size:15.5px;line-height:1.5}
+.g-list li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:5px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg)}
+.g-list b{color:var(--paper);font-weight:600}
+.tier-tag.slots{color:#6BE2A1;border-color:rgba(107,226,161,.5)}
+@media(max-width:860px){.guarantee{grid-template-columns:1fr;padding:26px 22px;gap:16px}.g-mark{width:64px;height:64px;border-radius:16px}.g-mark svg{width:36px;height:36px}.g-list{grid-template-columns:1fr}}
+
 /* ---- FAQ ---- */
 .faq{max-width:820px}
 details{border-bottom:1px solid var(--line)}
@@ -808,7 +821,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="stat" style="--w:20%"><b class="num" data-to="78">0</b><i>Her own cut of the recording</i><div class="bar"><i></i></div></div>
         <div class="stat hi" style="--w:100%"><b class="num" data-to="388">0</b><i>My cut of the same recording</i><div class="bar"><i></i></div></div>
       </div>
-      <p class="note">Two things are small here and I'd rather say so than have you find out: it's one video, and the channel is early. I'm showing it because it's the honest kind of proof — a controlled comparison on the same footage — not because 388 is a big number. When there's more, this section gets updated, not inflated.</p>
+      <p class="note rv"><b style="color:var(--paper)">Paying clients so far:</b> a Baptist church, a Calvary Chapel, and an insurance sales coach. Two things are small here and I'd rather say so than have you find out: it's one video, and the channel is early. I'm showing it because it's the honest kind of proof — a controlled comparison on the same footage — not because 388 is a big number. When there's more, this section gets updated, not inflated.</p>
     </div>
   </div>
 </section>
@@ -946,7 +959,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   <div class="wrap">
     <p class="eyebrow rv">Pricing</p>
     <h2 class="display rv">Three prices.<br>No call <span class="o">required</span>.</h2>
-    <p class="lede rv">Most studios hide the price behind a booking link because it changes depending on who's asking. Mine doesn't. Packs are $10 an edit. The monthly is me, every working day, for less than most people pay a freelancer for a week.</p>
+    <p class="lede rv">The studios running ads for this start at $999 a month and hide the rest behind a call. Mine is on the page: packs are $10 an edit, and the monthly is me, every working day, for $750.</p>
 
     <div class="tiers rv">
       <div class="tier">
@@ -973,13 +986,14 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <a class="btn" href="https://tally.so/r/jaVYZa">Start with a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
       <div class="tier">
-        <div class="tier-top"><span class="tier-name">Full-time editor</span><span class="tier-tag">Monthly</span></div>
+        <div class="tier-top"><span class="tier-name">Full-time editor</span><span class="tier-tag slots">3 slots · 3 open</span></div>
         <div class="tier-amt"><b>$<span class="num" data-to="750">0</span></b><i>per month · unlimited · month to month</i></div>
         <ul class="inc">
           <li>Me, on your content, every working day</li>
           <li>Send as much as you make — no cap, no counting</li>
           <li>Same-day turnaround once we're in rhythm</li>
           <li>Priority over pack clients</li>
+          <li>Three of these exist, because there is one of me</li>
           <li>Cancel any month, no notice period</li>
         </ul>
         <a class="btn ghost" href="https://tally.so/r/jaVYZa">Start with a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -999,6 +1013,19 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <div><b class="num" id="calcMo">$182</b><i>per month, at that pace</i></div>
           <div><b class="num" id="calcFirst">$0</b><i>your first edit</i></div>
         </div>
+      </div>
+    </div>
+    <div class="guarantee rv">
+      <div class="g-mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4 8 14v16c0 15 10 26 24 30 14-4 24-15 24-30V14z"/><path d="m22 32 7 7 13-14"/></svg></div>
+      <div>
+        <p class="eyebrow">The no-lock-in guarantee</p>
+        <h3 class="display">If it isn't right, you don't pay for it.</h3>
+        <ul class="g-list">
+          <li><b>The free edit is free.</b> No card, no trial, nothing to cancel.</li>
+          <li><b>Packs never expire</b>, and unused edits are refunded in full if you ever want out.</li>
+          <li><b>A cut that isn't right gets recut</b> until it is. You don't approve it, you don't count it.</li>
+          <li><b>The monthly cancels the day you say so.</b> No notice period, no exit call.</li>
+        </ul>
       </div>
     </div>
     <p class="note rv" style="max-width:none">Every option starts the same way: you send one video, I cut it free, you decide. No card until you've seen your own footage cut.</p>
@@ -1034,6 +1061,10 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
       <details>
         <summary>Do I have to get on a call?</summary>
         <div class="ans"><p>No. Everything runs over email. If you'd rather talk we can, but nothing about this requires it and you'll never be chased for one.</p></div>
+      </details>
+      <details>
+        <summary>What if I buy a pack and stop using it?</summary>
+        <div class="ans"><p>Packs never expire, so you can come back to it in six months. And if you'd rather have the money than the edits, unused ones are refunded in full. You are never stuck holding something you paid for and didn't use.</p></div>
       </details>
       <details>
         <summary>Why is it only $10 an edit?</summary>
