@@ -292,7 +292,17 @@ section{padding:104px 0;position:relative}
 .card p{margin:0;color:var(--mute);font-size:14.5px;line-height:1.55}
 .pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
 .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-2);border:1px solid var(--line-2);border-radius:99px;padding:5px 10px}
+.pill.hi{color:var(--orange);border-color:rgba(232,97,28,.5)}
 
+
+
+/* ---- continuous stream of graphics ---- */
+.stream{margin:34px -28px 0;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.stream-in{display:flex;width:max-content;animation:slide 48s linear infinite}
+.stream:hover .stream-in{animation-play-state:paused}
+.stream-in span{display:flex;gap:12px;padding-right:12px}
+.stream-in img{width:150px;height:266px;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:var(--ink-2)}
+@media(max-width:860px){.stream{margin:26px -20px 0}.stream-in img{width:120px;height:213px}}
 
 /* ---- what's in every edit: strip ---- */
 .inside-strip{list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -409,6 +419,7 @@ section{padding:104px 0;position:relative}
 .inc li:last-child{border-bottom:0}
 .inc li::before{content:"";position:absolute;left:3px;top:18px;width:11px;height:6px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg)}
 .tier .btn{justify-content:center}
+.tier-note{margin:-10px 0 0;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 
 
 /* ---- calculator ---- */
@@ -457,6 +468,7 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:"";position:absolute;right:8px;top:36px;width:11px;height:11px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);transition:transform .3s var(--ease),border-color .3s}
 details[open] summary::after{transform:rotate(-135deg);border-color:var(--orange)}
 details p{margin:0 0 28px;color:var(--paper-2);max-width:66ch}
+.faq-cta{margin:34px 0 0;display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:var(--paper-2);font-size:17px}
 details .ans{overflow:hidden;transition:height .45s var(--ease)}
 details[open] summary{color:var(--paper)}
 
@@ -715,7 +727,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 
     <p class="eyebrow rv">Selected work</p>
     <h2 class="display rv">Cuts, not <span class="o">templates</span>.</h2>
-    <p class="lede rv">Five cuts, twenty-odd graphic treatments, none of them used twice. That's deliberate — a client who spots a template knows they're being served from one.</p>
+    <p class="lede rv">Six cuts, thirty-odd graphic treatments, none of them used twice. That's deliberate — a client who spots a template knows they're being served from one.</p>
 
     <div class="rail">
       <article class="card rv">
@@ -727,7 +739,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="meta">
           <h3>The offer, cut as an ad</h3>
           <p>Sixteen graphic beats in 33 seconds, each landing on the exact word it belongs to. Typing, drawing, counting — nothing reused.</p>
-          <div class="pills"><span class="pill">Motion graphics</span><span class="pill">Voice</span><span class="pill">Sound design</span></div>
+          <div class="pills"><span class="pill hi">Hormozi style</span><span class="pill">Motion graphics</span><span class="pill">Sound design</span></div>
         </div>
       </article>
 
@@ -740,7 +752,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="meta">
           <h3>E-commerce · before / after</h3>
           <p>A reseller explaining his numbers. Real eBay and Amazon marks, a counting figure, a drawn product — all on the beat he says them.</p>
-          <div class="pills"><span class="pill">Before/after</span><span class="pill">Logos</span><span class="pill">Counters</span></div>
+          <div class="pills"><span class="pill hi">Iman Gadzhi style</span><span class="pill">Before/after</span><span class="pill">Counters</span></div>
         </div>
       </article>
 
@@ -753,7 +765,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="meta">
           <h3>Coaching · before / after</h3>
           <p>A coach on a plain backdrop. Captions matched word for word, a checklist that ticks itself, and a push-in so the frame never sits still.</p>
-          <div class="pills"><span class="pill">Before/after</span><span class="pill">Captions</span><span class="pill">Pacing</span></div>
+          <div class="pills"><span class="pill hi">Ali Abdaal style</span><span class="pill">Before/after</span><span class="pill">Captions</span></div>
         </div>
       </article>
 
@@ -766,7 +778,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="meta">
           <h3>Real estate · before / after</h3>
           <p>Three things that sell a house. A price tag crossed out, a listing that re-orders itself, an inbox answering in minutes, four houses stamped SOLD. Sample footage, real edit.</p>
-          <div class="pills"><span class="pill">Before/after</span><span class="pill">UI graphics</span><span class="pill">Grade</span></div>
+          <div class="pills"><span class="pill hi">Ryan Serhant style</span><span class="pill">Before/after</span><span class="pill">UI graphics</span></div>
         </div>
       </article>
 
@@ -779,13 +791,32 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="meta">
           <h3>Fitness · before / after</h3>
           <p>A week losing six days and keeping three, a plate and a moon, ninety squares filling, a number circled in marker. Every graphic built from the sentence it sits on. Sample footage, real edit.</p>
-          <div class="pills"><span class="pill">Before/after</span><span class="pill">Drawn graphics</span><span class="pill">Counters</span></div>
+          <div class="pills"><span class="pill hi">Chris Williamson style</span><span class="pill">Before/after</span><span class="pill">Drawn graphics</span></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="vid">
+          <video src="media/reel5.mp4" poster="media/reel5.jpg" playsinline preload="none" loop></video>
+          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
+          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
+        </div>
+        <div class="meta">
+          <h3>Founder · before / after</h3>
+          <p>Forty thousand out, twelve back, then zero on ads and a post every single day. Money bars, a month of play marks, an arrow that draws itself to $400,000. Sample footage, real edit.</p>
+          <div class="pills"><span class="pill hi">Alex Hormozi style</span><span class="pill">Before/after</span><span class="pill">Money graphics</span></div>
         </div>
       </article>
     </div>
-    <p class="note rv" style="margin:10px 0 6px">Straight answer on the footage: the ad and the two before/afters on the right are sample clips, so no one in them is a client. The e-commerce and coaching cuts are real footage. Every edit is real either way.</p>
+    <p class="note rv" style="margin:10px 0 6px">Straight answer on the footage: the ad and the three before/afters on the right are sample clips, so no one in them is a client. The e-commerce and coaching cuts are real footage. Every edit is real either way.</p>
     <div class="rail-nav" aria-hidden="true"><button class="rail-btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><span class="rail-hint">drag, scroll, or use the arrows</span><button class="rail-btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
 
+    <div class="stream rv" aria-label="A continuous stream of graphics from the cuts">
+      <div class="stream-in">
+        <span><img src="media/g01.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g02.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g03.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g04.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g05.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g06.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g07.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g08.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g09.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g10.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g11.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g12.jpg" alt="" loading="lazy" width="150" height="266"></span>
+        <span aria-hidden="true"><img src="media/g01.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g02.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g03.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g04.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g05.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g06.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g07.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g08.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g09.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g10.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g11.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g12.jpg" alt="" loading="lazy" width="150" height="266"></span>
+      </div>
+    </div>
     <ul class="inside-strip rv" aria-label="What's in every edit">
       <li><b>01</b><span>The hook</span><i>strongest sentence first, on screen</i></li>
       <li><b>02</b><span>Captions that match</span><i>transcribed from the audio, word for word</i></li>
@@ -921,7 +952,8 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <li>First cut back in 48 hours</li>
           <li>Nothing expires, nothing renews</li>
         </ul>
-        <a class="btn ghost" href="https://tally.so/r/jaVYZa">Start with a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn ghost" href="https://tally.so/r/jaVYZa">I need this <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="tier-note">Starts with a free edit — no card.</p>
       </div>
       <div class="tier hot">
         <div class="tier-top"><span class="tier-name">The pack</span><span class="tier-tag">Most people start here</span></div>
@@ -933,7 +965,8 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <li>Vertical and horizontal from the same footage</li>
           <li>Nothing expires, nothing renews</li>
         </ul>
-        <a class="btn" href="https://tally.so/r/jaVYZa">Start with a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn" href="https://tally.so/r/jaVYZa">I need this <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="tier-note">Starts with a free edit — no card.</p>
       </div>
       <div class="tier">
         <div class="tier-top"><span class="tier-name">Full-time editor</span><span class="tier-tag slots">3 slots · 3 open</span></div>
@@ -946,7 +979,8 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <li>Three of these exist, because there is one of me</li>
           <li>Cancel any month, no notice period</li>
         </ul>
-        <a class="btn ghost" href="https://tally.so/r/jaVYZa">Start with a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn ghost" href="https://tally.so/r/jaVYZa">I need this <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="tier-note">Starts with a free edit — no card.</p>
       </div>
     </div>
     <div class="calc rv" id="calc">
@@ -1025,6 +1059,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="ans"><p>Me — Max. I've been editing video since 2016. It isn't outsourced and it isn't a queue. If the work is good that's mine, and if it's late that's mine too.</p></div>
       </details>
     </div>
+    <p class="faq-cta rv">Still not sure? That's what the free edit is for. <a class="btn" href="https://tally.so/r/jaVYZa">Send one video</a></p>
   </div>
 </section>
 
@@ -1077,7 +1112,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <button class="sheet-x" data-close aria-label="Close">&times;</button>
     <p class="eyebrow">Get a free edit</p>
     <h3 class="display">Send one video.</h3>
-    <p class="sheet-sub">You'll have it back cut in 48 hours. No card, nothing to cancel, and you decide after you've seen it.</p>
+    <p class="sheet-sub">You'll hear back within 24 hours and have the cut within 48. No card, nothing to cancel, and you decide after you've seen it.</p>
     <div class="sheet-form"><iframe data-tally-src="https://tally.so/embed/jaVYZa?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="430" frameborder="0" marginheight="0" marginwidth="0" title="Get a free edit"></iframe></div>
     <a class="sheet-alt" href="https://tally.so/r/jaVYZa" target="_blank" rel="noopener">Open the form in a new tab instead</a>
   </aside>
