@@ -15,7 +15,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
    TOKENS
@@ -390,6 +390,9 @@ section{padding:130px 0;position:relative}
 .about-copy h2{font-size:clamp(40px,5vw,70px)}
 .about-copy .sig{font-family:var(--display);font-weight:800;font-stretch:100%;font-size:22px;letter-spacing:-.01em;text-transform:none;margin-top:30px;display:flex;align-items:center;gap:14px}
 .about-copy .sig i{width:44px;height:1px;background:var(--orange)}
+.hand{font-family:'Caveat',cursive;font-weight:600;font-size:44px;letter-spacing:0;text-transform:none;color:var(--paper);background:linear-gradient(90deg,var(--paper) 0 50%,transparent 50% 100%);background-size:200% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:background-position 1.6s cubic-bezier(.4,0,.2,1) .3s}
+.panel.in .hand{background-position:0 0}
+@media(prefers-reduced-motion:reduce){.hand{background-position:0 0}}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px;padding-top:30px;border-top:1px solid var(--line)}
 .facts b{display:block;font-family:var(--display);font-weight:900;font-stretch:112%;font-size:34px;letter-spacing:-.02em;line-height:1}
 .facts i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:8px}
@@ -881,7 +884,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <p class="eyebrow">The editor</p>
         <h2 class="display">I'm <span class="o">Max Love</span>.</h2>
         <p class="lede" style="margin-bottom:0">I've been cutting video since 2016. Deluxe Reels is me — not a studio, not a queue of freelancers. Every edit on this page is mine, and every edit you'd get is too. If the work is good, that's on me. If it's late, that's on me as well.</p>
-        <div class="sig"><i></i>Max</div>
+        <div class="sig"><i></i><span class="hand">Max Love</span></div>
         <div class="facts">
           <div><b class="num" data-to="2016">0</b><i>Editing since</i></div>
           <div><b class="num" data-to="48" data-suffix="h">0h</b><i>First cut back</i></div>
@@ -969,6 +972,10 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
       <details>
         <summary>Do I have to get on a call?</summary>
         <div class="ans"><p>No. Everything runs over email. If you'd rather talk we can, but nothing about this requires it and you'll never be chased for one.</p></div>
+      </details>
+      <details>
+        <summary>Why is it only $10 an edit?</summary>
+        <div class="ans"><p>Because there's nothing between you and the editor. No account manager, no sales team, no office, no calls to sit through — and the boring parts of an edit (matching captions to the audio, timing, exports) run on software I've built over the years, so my time goes on the part that matters: what happens on screen. You're paying for the cut, not the overhead.</p></div>
       </details>
       <details>
         <summary>Who's actually doing the editing?</summary>
