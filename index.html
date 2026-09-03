@@ -318,7 +318,7 @@ section{padding:104px 0;position:relative}
 
 
 /* ---- real client quotes (hidden until the first one is approved) ---- */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
 .quote{margin:0;background:var(--ink);border:1px solid var(--line);border-radius:18px;padding:22px 22px 18px;position:relative}
 .quote::before{content:"\201C";position:absolute;top:6px;right:18px;font-family:var(--display);font-size:64px;line-height:1;color:var(--orange);opacity:.5}
 .quote blockquote{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--paper)}
@@ -856,10 +856,11 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="client"><b>A Calvary Chapel</b><i>Short-form clips from Sunday services</i></div>
         <div class="client"><b>An insurance sales coach</b><i>Reels cut from her recordings — the 388-view cut above is hers</i></div>
       </div>
-      <p class="note" style="margin-top:18px">Paying clients so far. Names and quotes go up the moment each of them says yes — nothing on this page is invented, and that includes the testimonials it doesn't have yet.</p>
+      <p class="note" style="margin-top:18px">Paying clients so far. Quotes go up the moment each client says yes, in their own words — nothing on this page is invented, and that includes the testimonials it doesn't have yet.</p>
       <!-- Real quotes only. Each entry: the client's own words verbatim, name/org exactly as approved, date approved.
            Unhide by removing `hidden` once the first one is in. -->
-      <div class="quotes" id="quotes" hidden>
+      <div class="quotes" id="quotes">
+        <figure class="quote"><blockquote>Max is great at what he does, easy to work with!</blockquote><figcaption><b>Aaron Baker</b><i>Media Coordinator @Denham Street Baptist Church · approved 2026-09-03</i></figcaption></figure>
         <!-- FOUND, NOT YET APPROVED — do not unhide until the sender confirms wording and attribution:
              Jeff Griffith (Denham Street Baptist), 2026-09-02 05:10 — as typed: "Max, I'm very pleased with the quality the editing as well as the captions. We may make some adjustments down the road but I like the way it looks right now."
              Aaron Baker (Denham thread; role/church NOT confirmed — ask before attributing), 2026-09-01 21:09 — "We appreciate it Max, it's been a pleasure working with you."
