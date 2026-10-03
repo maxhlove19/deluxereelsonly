@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Deluxe Reels — $10 edits by Max Love</title>
-<meta name="description" content="$10 an edit. 30 for $300, 50 for $500, or your own full-time editor for $750 a month. Send Max Love your last video and he'll cut you one free.">
-<meta property="og:title" content="Deluxe Reels — $10 edits by Max Love">
-<meta property="og:description" content="$10 an edit. First one's free.">
+<title>Deluxe Reels — Short-form editing by Max Love</title>
+<meta name="description" content="Project-based short-form editing and content repurposing for podcasts, interviews, events, creators, and brands. Scope, deliverables, review steps, and schedule are agreed before work begins.">
+<meta property="og:title" content="Deluxe Reels — Short-form editing by Max Love">
+<meta property="og:description" content="Turn long-form footage into focused, platform-ready short-form content with a clearly agreed project scope.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0A0A0C">
-<meta property="og:image" content="https://maxhlove19.github.io/deluxereelsonly/media/og.jpg">
+<meta property="og:image" content="https://maxhlove19.github.io/deluxereelsonly/media/cmp_edit.jpg">
 <meta property="og:url" content="https://maxhlove19.github.io/deluxereelsonly/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="preconnect" href="https://tally.so">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,700..900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
@@ -249,7 +248,7 @@ section{padding:104px 0;position:relative}
 .stage .phone{width:330px;transform:rotateX(18deg) scale(.84);transform-origin:center 20%;transition:none}
 .stage .device{flex-direction:column;align-items:center;gap:14px}
 .cmp{touch-action:none;cursor:ew-resize;user-select:none}
-.cmp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp video,.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cmp-top{position:absolute;inset:0;clip-path:inset(0 0 0 var(--x))}
 .cmp-handle{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:rgba(255,255,255,.9);transform:translateX(-1px);box-shadow:0 0 14px rgba(0,0,0,.5);z-index:4}
 .cmp-handle span{position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;transform:translate(-50%,-50%);box-shadow:0 8px 24px -6px rgba(0,0,0,.7);transition:transform .2s var(--ease)}
@@ -310,11 +309,24 @@ section{padding:104px 0;position:relative}
 .inside-strip b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--orange);font-weight:400}
 .inside-strip span{font-weight:600;font-size:16px;letter-spacing:-.01em}
 .inside-strip i{font-style:normal;color:var(--mute);font-size:13.5px;line-height:1.45}
+.selected-work{margin-top:76px;padding-top:70px;border-top:1px solid var(--line)}
+.selected-work .lede{margin-bottom:28px}
+.work-links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.work-link{
+  min-height:230px;padding:26px;border:1px solid var(--line);border-radius:20px;
+  background:var(--ink-2);text-decoration:none;display:flex;flex-direction:column;
+  transition:transform .3s var(--ease),border-color .25s,background .25s;
+}
+.work-link:hover{transform:translateY(-5px);border-color:var(--line-2);background:var(--ink-3)}
+.work-link .kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
+.work-link h3{font-size:23px;margin:18px 0 10px}
+.work-link p{margin:0;color:var(--paper-2);font-size:14.5px;line-height:1.55}
+.work-link b{margin-top:auto;padding-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper)}
 .clients{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
 .client{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
 .client b{display:block;font-weight:600;font-size:16px;margin-bottom:4px}
 .client i{display:block;font-style:normal;color:var(--mute);font-size:14px;line-height:1.45}
-@media(max-width:860px){.inside-strip{grid-template-columns:1fr 1fr;gap:10px}.clients{grid-template-columns:1fr;gap:10px}}
+@media(max-width:860px){.inside-strip{grid-template-columns:1fr 1fr;gap:10px}.work-links,.clients{grid-template-columns:1fr;gap:10px}.selected-work{margin-top:56px;padding-top:52px}.work-link{min-height:0}}
 
 
 /* ---- real client quotes (hidden until the first one is approved) ---- */
@@ -408,7 +420,7 @@ section{padding:104px 0;position:relative}
 .facts b{display:block;font-family:var(--display);font-weight:900;font-stretch:112%;font-size:34px;letter-spacing:-.02em;line-height:1}
 .facts i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:8px}
 
-/* ---- PRICE: three tiers ---- */
+/* ---- service scopes ---- */
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
 .tier{
   position:relative;background:var(--ink-2);border:1px solid var(--line);border-radius:24px;padding:34px 30px 30px;
@@ -432,24 +444,6 @@ section{padding:104px 0;position:relative}
 .tier-note{margin:-10px 0 0;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 
 
-/* ---- calculator ---- */
-.calc{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--ink-2);border:1px solid var(--line);border-radius:24px;padding:40px 44px;align-items:center}
-.calc h3{font-size:clamp(26px,3vw,38px);margin-bottom:22px}
-.calc-row{display:flex;align-items:center;gap:22px}
-.calc-row output{font-family:var(--display);font-weight:900;font-stretch:112%;font-size:56px;line-height:1;min-width:2.2ch;text-align:right;color:var(--orange);font-variant-numeric:tabular-nums}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--orange) var(--p,14%),var(--ink-3) var(--p,14%));outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:0;box-shadow:0 4px 16px rgba(0,0,0,.6);cursor:grab}
-input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:0;cursor:grab}
-input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px rgba(232,97,28,.4)}
-.calc-hint{margin:14px 0 0;color:var(--mute);font-size:14px}
-.calc-pick{background:var(--ink);border:1px solid var(--line-2);border-radius:18px;padding:20px 22px;margin-bottom:16px}
-.calc-pick b{display:block;font-size:24px;font-weight:600;margin:8px 0 4px;letter-spacing:-.01em}
-.calc-pick i{display:block;font-style:normal;color:var(--mute);font-size:14.5px}
-.calc-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.calc-nums div{background:var(--ink);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.calc-nums b{display:block;font-family:var(--display);font-weight:900;font-stretch:112%;font-size:30px;letter-spacing:-.02em;line-height:1}
-.calc-nums i{display:block;font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:8px}
-@media(max-width:860px){.calc{grid-template-columns:1fr;padding:26px 22px;gap:22px}.calc-nums{grid-template-columns:1fr 1fr}.calc-nums div:last-child{grid-column:span 2}}
 /* ---- rail arrows ---- */
 .rail-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-top:-8px}
 .rail-btn{width:42px;height:42px;border-radius:50%;background:var(--ink-2);border:1px solid var(--line-2);color:var(--paper);display:grid;place-items:center;cursor:pointer;transition:background .2s,transform .2s}
@@ -467,7 +461,6 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px rgba(
 .g-list li{position:relative;padding-left:22px;color:var(--paper-2);font-size:15.5px;line-height:1.5}
 .g-list li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:5px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg)}
 .g-list b{color:var(--paper);font-weight:600}
-.tier-tag.slots{color:#6BE2A1;border-color:rgba(107,226,161,.5)}
 @media(max-width:860px){.guarantee{grid-template-columns:1fr;padding:26px 22px;gap:16px}.g-mark{width:64px;height:64px;border-radius:16px}.g-mark svg{width:36px;height:36px}.g-list{grid-template-columns:1fr}}
 
 /* ---- FAQ ---- */
@@ -488,10 +481,10 @@ details[open] summary{color:var(--paper)}
 #end h2{font-size:clamp(46px,7.4vw,110px);margin-bottom:22px}
 #end .lede{margin:0 auto 40px;text-align:center}
 #end .wrap{position:relative;z-index:3}
-.free-steps{list-style:none;margin:54px auto 0;padding:0;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.free-steps li{display:inline-flex;align-items:center;gap:12px;background:rgba(17,17,20,.7);backdrop-filter:blur(10px);border:1px solid var(--line-2);border-radius:999px;padding:10px 18px 10px 10px;font-size:14.5px;color:var(--paper-2)}
-.free-steps b{width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:12px}
-@media(max-width:860px){.free-steps{flex-direction:column;align-items:stretch;gap:10px}.free-steps li{justify-content:flex-start}}
+.scope-steps{list-style:none;margin:54px auto 0;padding:0;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.scope-steps li{display:inline-flex;align-items:center;gap:12px;background:rgba(17,17,20,.7);backdrop-filter:blur(10px);border:1px solid var(--line-2);border-radius:999px;padding:10px 18px 10px 10px;font-size:14.5px;color:var(--paper-2)}
+.scope-steps b{width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:12px}
+@media(max-width:860px){.scope-steps{flex-direction:column;align-items:stretch;gap:10px}.scope-steps li{justify-content:flex-start}}
 
 footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-size:14px}
 .foot{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center}
@@ -632,7 +625,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 </style>
 <noscript><style>.rv,.rv-l,.rv-r,.sub,.cta-row,.tiny,.chip{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"Deluxe Reels","serviceType":"Short-form video editing","provider":{"@type":"Person","name":"Max Love"},"url":"https://deluxereelsonly.com/","description":"Short-form video editing. $10 an edit. 30 for $300, 50 for $500, or a full-time editor for $750 a month. First edit free.","offers":[{"@type":"Offer","name":"Starter pack","price":"300","priceCurrency":"USD","description":"30 edits"},{"@type":"Offer","name":"The pack","price":"500","priceCurrency":"USD","description":"50 edits plus 5 free"},{"@type":"Offer","name":"Full-time editor","price":"750","priceCurrency":"USD","description":"Unlimited edits, month to month"}]}
+{"@context":"https://schema.org","@type":"Service","name":"Deluxe Reels","serviceType":"Short-form video editing and content repurposing","provider":{"@type":"Person","name":"Max Love"},"url":"https://maxhlove19.github.io/deluxereelsonly/","description":"Project-based post-production for podcasts, interviews, events, creators, and brands, including long-form-to-short-form editing, captions, audio cleanup, reframing, and agreed export deliverables."}
 </script>
 </head>
 <body>
@@ -646,13 +639,12 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   <ul>
     <li><a href="#work" data-sec="work">Work</a></li>
     <li><a href="#proof" data-sec="proof">Results</a></li>
-    <li><a href="#anatomy" data-sec="anatomy">Anatomy</a></li>
     <li><a href="#process" data-sec="process">Process</a></li>
     <li><a href="#about" data-sec="about">Max</a></li>
-    <li><a href="#price" data-sec="price">Pricing</a></li>
+    <li><a href="#scope" data-sec="scope">Services</a></li>
     <li><a href="#faq" data-sec="faq">FAQ</a></li>
   </ul>
-  <a class="btn" href="https://tally.so/r/jaVYZa">Get a free edit</a>
+  <a class="btn" href="https://www.instagram.com/deluxereelsonly/">Start a project inquiry</a>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
   <div class="track" aria-hidden="true"><i id="trackFill"></i><span id="trackDots"></span></div>
 </nav>
@@ -665,18 +657,18 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 
   <div class="wrap">
     <div class="hero-copy">
-      <p class="eyebrow">Short-form editing · Max Love · since 2016</p>
+      <p class="eyebrow">Short-form editing · Max Love · project-based</p>
       <h1 class="display">
-        <span class="row"><span><span class="num" data-to="50">0</span> edits.</span></span>
-        <span class="row"><span><span class="o">$<span class="num" data-to="500">0</span></span> flat.</span></span>
-        <span class="row small"><span>That's <span class="mark">$<span class="num" data-to="10">0</span> an edit.</span></span></span>
+        <span class="row"><span>One source.</span></span>
+        <span class="row"><span><span class="o">More usable</span> content.</span></span>
+        <span class="row small"><span>Built around <span class="mark">your brief.</span></span></span>
       </h1>
-      <p class="sub">Buy a pack — <b>30 for $300</b>, or <b>50 for $500</b> and I throw in five — or keep me on as your <b>full-time editor for $750 a month</b>. Either way, send me your last video first and I'll cut it <b>free</b>, so you see it before you pay a cent.</p>
+      <p class="sub">Deluxe Reels turns podcasts, interviews, events, and creator footage into platform-ready clips with strong hooks, clear captions, clean audio, and intentional reframing. <b>Scope, deliverables, review steps, and schedule are agreed before work begins.</b></p>
       <div class="cta-row">
-        <a class="btn big" href="https://tally.so/r/jaVYZa">Get a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn ghost big" href="#work">See the work</a>
+        <a class="btn big" href="https://www.instagram.com/deluxereelsonly/">Start a project inquiry <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn ghost big" href="#work">View selected work</a>
       </div>
-      <p class="tiny">No card · Nothing to cancel · First cut back in 48 hours</p>
+      <p class="tiny">Clear scope · Agreed deliverables · Human creative review</p>
     </div>
 
     <div class="hero-device">
@@ -684,14 +676,13 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="screen">
           <div class="notch"></div>
           <div class="glare"></div>
-          <video src="media/ad.mp4" poster="media/ad.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Deluxe Reels offer ad, before and after"></video>
-          <button class="snd" id="heroSnd" aria-label="Turn sound on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="w" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span>tap for sound</span></button>
+          <img src="media/cmp_edit.jpg" alt="Selected Deluxe Reels editing sample" width="720" height="1280">
         </div>
       </div>
       <div class="chips" aria-hidden="true">
         <span class="chip c1" data-depth="0.42"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>Hook lands in the first second</span>
         <span class="chip c2" data-depth="0.55"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Captions matched to the audio <em>word for word</em></span>
-        <span class="chip c3" data-depth="0.36"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 12h8M8 8h5M8 16h6"/></svg><em>$10</em> per edit, no exceptions</span>
+        <span class="chip c3" data-depth="0.36"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 12h8M8 8h5M8 16h6"/></svg><em>Audio cleanup</em> · reframing · export QA</span>
       </div>
     </div>
   </div>
@@ -701,8 +692,8 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div>
-    <span><em>◆</em> Editing since 2016 <em>◆</em> 30 edits · $300 <em>◆</em> 50 edits · $500 <em>◆</em> Full-time editor · $750 a month <em>◆</em> 48-hour first cut <em>◆</em> Hooks · Captions · Motion graphics · Sound <em>◆</em> No calls, ever</span>
-    <span><em>◆</em> Editing since 2016 <em>◆</em> 30 edits · $300 <em>◆</em> 50 edits · $500 <em>◆</em> Full-time editor · $750 a month <em>◆</em> 48-hour first cut <em>◆</em> Hooks · Captions · Motion graphics · Sound <em>◆</em> No calls, ever</span>
+    <span><em>◆</em> Long-form to short-form <em>◆</em> Hook and pacing <em>◆</em> Captions matched to the audio <em>◆</em> Audio cleanup and balancing <em>◆</em> Platform-specific reframing <em>◆</em> Human creative direction and QA</span>
+    <span><em>◆</em> Long-form to short-form <em>◆</em> Hook and pacing <em>◆</em> Captions matched to the audio <em>◆</em> Audio cleanup and balancing <em>◆</em> Platform-specific reframing <em>◆</em> Human creative direction and QA</span>
   </div>
 </div>
 
@@ -715,8 +706,8 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
           <div class="screen cmp" id="cmp" style="--x:52%" tabindex="0" role="slider" aria-label="Compare raw and edited" aria-valuemin="0" aria-valuemax="100" aria-valuenow="52">
             <div class="notch"></div>
             <div class="glare"></div>
-            <video class="cmp-raw" src="media/cmp_raw.mp4" poster="media/cmp_raw.jpg" muted loop playsinline preload="metadata" aria-label="Raw clip"></video>
-            <div class="cmp-top"><video class="cmp-edit" src="media/cmp_edit.mp4" poster="media/cmp_edit.jpg" muted loop playsinline preload="metadata" aria-label="Edited clip"></video></div>
+            <img class="cmp-raw" src="media/cmp_raw.jpg" alt="Raw sample frame" width="720" height="1280">
+            <div class="cmp-top"><img class="cmp-edit" src="media/cmp_edit.jpg" alt="Edited sample frame" width="720" height="1280"></div>
             <div class="cmp-handle" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 4 12l5 6M15 6l5 6-5 6"/></svg></span></div>
             <b class="cmp-lab l">raw</b><b class="cmp-lab r">edited</b>
           </div>
@@ -730,109 +721,47 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
         <div class="kv rv">
           <b>Source</b><span>A phone recording of a talking head, no B-roll</span>
           <b>Added</b><span>A grade, matched captions, four drawn graphics, UI sound design</span>
-          <b>Time</b><span>Under 48 hours from link to delivered file</span>
+          <b>Scope</b><span>Source length, edit complexity, deliverables, and review needs set the schedule</span>
         </div>
       </div>
     </div>
 
-    <p class="eyebrow rv">Selected work</p>
-    <h2 class="display rv">Cuts, not <span class="o">templates</span>.</h2>
-    <p class="lede rv">Six cuts, thirty-odd graphic treatments, none of them used twice. That's deliberate — a client who spots a template knows they're being served from one.</p>
-
-    <div class="rail">
-      <article class="card rv">
-        <div class="vid">
-          <video src="media/ad.mp4" poster="media/ad.jpg" playsinline preload="none" loop></video>
-          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
-          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
-        </div>
-        <div class="meta">
-          <h3>The offer, cut as an ad</h3>
-          <p>Sixteen graphic beats in 33 seconds, each landing on the exact word it belongs to. Typing, drawing, counting — nothing reused.</p>
-          <div class="pills"><span class="pill hi">Hormozi style</span><span class="pill">Motion graphics</span><span class="pill">Sound design</span></div>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="vid">
-          <video src="media/reel1.mp4" poster="media/reel1.jpg" playsinline preload="none" loop></video>
-          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
-          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
-        </div>
-        <div class="meta">
-          <h3>E-commerce · before / after</h3>
-          <p>A reseller explaining his numbers. Real eBay and Amazon marks, a counting figure, a drawn product — all on the beat he says them.</p>
-          <div class="pills"><span class="pill hi">Iman Gadzhi style</span><span class="pill">Before/after</span><span class="pill">Counters</span></div>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="vid">
-          <video src="media/reel2.mp4" poster="media/reel2.jpg" playsinline preload="none" loop></video>
-          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
-          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
-        </div>
-        <div class="meta">
-          <h3>Coaching · before / after</h3>
-          <p>A coach on a plain backdrop. Captions matched word for word, a checklist that ticks itself, and a push-in so the frame never sits still.</p>
-          <div class="pills"><span class="pill hi">Ali Abdaal style</span><span class="pill">Before/after</span><span class="pill">Captions</span></div>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="vid">
-          <video src="media/reel3.mp4" poster="media/reel3.jpg" playsinline preload="none" loop></video>
-          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
-          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
-        </div>
-        <div class="meta">
-          <h3>Real estate · before / after</h3>
-          <p>Three things that sell a house. A price tag crossed out, a listing that re-orders itself, an inbox answering in minutes, four houses stamped SOLD. Sample footage, real edit.</p>
-          <div class="pills"><span class="pill hi">Ryan Serhant style</span><span class="pill">Before/after</span><span class="pill">UI graphics</span></div>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="vid">
-          <video src="media/reel4.mp4" poster="media/reel4.jpg" playsinline preload="none" loop></video>
-          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
-          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
-        </div>
-        <div class="meta">
-          <h3>Fitness · before / after</h3>
-          <p>A week losing six days and keeping three, a plate and a moon, ninety squares filling, a number circled in marker. Every graphic built from the sentence it sits on. Sample footage, real edit.</p>
-          <div class="pills"><span class="pill hi">Chris Williamson style</span><span class="pill">Before/after</span><span class="pill">Drawn graphics</span></div>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="vid">
-          <video src="media/reel5.mp4" poster="media/reel5.jpg" playsinline preload="none" loop></video>
-          <button class="play" aria-label="Play"><span><svg viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></svg></span></button>
-          <button class="sound" aria-label="Toggle sound">SOUND ON</button>
-        </div>
-        <div class="meta">
-          <h3>Founder · before / after</h3>
-          <p>Forty thousand out, twelve back, then zero on ads and a post every single day. Money bars, a month of play marks, an arrow that draws itself to $400,000. Sample footage, real edit.</p>
-          <div class="pills"><span class="pill hi">Alex Hormozi style</span><span class="pill">Before/after</span><span class="pill">Money graphics</span></div>
-        </div>
-      </article>
-    </div>
-    <p class="note rv" style="margin:10px 0 6px">Straight answer on the footage: the ad and the three before/afters on the right are sample clips, so no one in them is a client. The e-commerce and coaching cuts are real footage. Every edit is real either way.</p>
-    <div class="rail-nav" aria-hidden="true"><button class="rail-btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><span class="rail-hint">drag, scroll, or use the arrows</span><button class="rail-btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
-
-    <div class="stream rv" aria-label="A continuous stream of graphics from the cuts">
-      <div class="stream-in">
-        <span><img src="media/g01.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g02.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g03.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g04.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g05.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g06.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g07.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g08.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g09.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g10.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g11.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g12.jpg" alt="" loading="lazy" width="150" height="266"></span>
-        <span aria-hidden="true"><img src="media/g01.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g02.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g03.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g04.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g05.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g06.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g07.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g08.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g09.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g10.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g11.jpg" alt="" loading="lazy" width="150" height="266"><img src="media/g12.jpg" alt="" loading="lazy" width="150" height="266"></span>
-      </div>
-    </div>
-    <ul class="inside-strip rv" aria-label="What's in every edit">
+    <p class="eyebrow rv">Selected sample evidence</p>
+    <h2 class="display rv">One edit, <span class="o">opened up</span>.</h2>
+    <p class="lede rv">The before/after above uses sample footage and is shown to demonstrate grading, matched captions, custom graphics, sound design, and reframing—not to imply a client relationship or guaranteed outcome.</p>
+    <p class="note rv" style="margin:10px 0 30px">Statements inside source footage belong to that footage and are not presented as verified Deluxe Reels results. The example is evidence of the editing treatment, not a promise of performance.</p>
+    <ul class="inside-strip rv" aria-label="What an edit can include">
       <li><b>01</b><span>The hook</span><i>strongest sentence first, on screen</i></li>
       <li><b>02</b><span>Captions that match</span><i>transcribed from the audio, word for word</i></li>
       <li><b>03</b><span>Graphics from the sentence</span><i>a gap drawn as a gap, a number that counts</i></li>
       <li><b>04</b><span>Numbers you can feel</span><i>money and results get the most motion</i></li>
     </ul>
+
+    <div class="selected-work">
+      <p class="eyebrow rv">Selected work</p>
+      <h2 class="display rv">Three formats.<br><span class="o">Direct links.</span></h2>
+      <p class="lede rv">Public examples across creator video, video essay, and short-form editing. They are included to show creative and post-production range—not client status or promised results.</p>
+      <div class="work-links rv">
+        <a class="work-link" href="https://www.youtube.com/watch?v=npa5uB6GqBc" target="_blank" rel="noopener">
+          <span class="kind">Max Love Fitness</span>
+          <h3>I Stopped Trying To Get Big</h3>
+          <p>Max Love as creator, with creative direction and AI-assisted post-production.</p>
+          <b>Watch on YouTube ↗</b>
+        </a>
+        <a class="work-link" href="https://www.youtube.com/watch?v=NpH7MLeVktc" target="_blank" rel="noopener">
+          <span class="kind">Screenwright · video essay</span>
+          <h3>when the breaking bad writers already wrote your death</h3>
+          <p>A public long-form editing example focused on structure, pacing, and presentation.</p>
+          <b>Watch on YouTube ↗</b>
+        </a>
+        <a class="work-link" href="https://maxhlove19.github.io/maxloveediting/c/ubc-hattiesburg/clip.mp4" target="_blank" rel="noopener">
+          <span class="kind">Self-directed spec</span>
+          <h3>UBC Hattiesburg church short</h3>
+          <p>Self-directed spec edit—not commissioned by or affiliated with UBC Hattiesburg.</p>
+          <b>View the spec short ↗</b>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -876,60 +805,27 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   </div>
 </section>
 
-<!-- ============ ANATOMY ============ -->
-<section id="anatomy">
-  <div class="wrap">
-    <p class="eyebrow rv">Anatomy of an edit</p>
-    <h2 class="display rv">Fifteen seconds,<br>four <span class="o">events</span>.</h2>
-    <p class="lede rv">This is the real estate reel from the rail (sample footage, real edit), opened up. Scrub the timeline, tap a marker, watch the words light up as they're spoken. Every caption is matched to the audio, not guessed.</p>
-    <div class="anat rv">
-      <div class="device">
-        <div class="phone">
-          <div class="screen">
-            <div class="notch"></div>
-            <div class="glare"></div>
-            <video id="anV" src="media/reel3.mp4" poster="media/reel3.jpg" muted loop playsinline preload="metadata" aria-label="Real estate before and after reel"></video>
-          </div>
-        </div>
-      </div>
-      <div class="an-side">
-        <div class="an-now"><span class="n" id="anIdx">&mdash;</span><div><b id="anTitle">Press play, or drag the playhead</b><i id="anSub">the graphics land on the exact word</i></div></div>
-        <div class="tl" id="tl" role="slider" aria-label="Timeline" aria-valuemin="0" aria-valuemax="15.28" aria-valuenow="0" tabindex="0">
-          <div class="tl-track"><i class="tl-fill" id="tlFill"></i><button class="mk" style="--at:5.30%;--len:14.66%" data-t="0.81" data-i="0" aria-label="A price tag gets crossed out"><i></i></button><button class="mk" style="--at:40.31%;--len:14.33%" data-t="6.16" data-i="1" aria-label="The listing re-orders itself"><i></i></button><button class="mk" style="--at:57.72%;--len:19.24%" data-t="8.82" data-i="2" aria-label="Three messages, three replies"><i></i></button><button class="mk" style="--at:83.51%;--len:16.49%" data-t="12.76" data-i="3" aria-label="Four houses stamped SOLD"><i></i></button><span class="tl-head" id="tlHead"><em id="tlTime">0.00</em></span></div>
-          <div class="tl-ticks"><s style="left:0.00%">0s</s><s style="left:19.63%">3s</s><s style="left:39.27%">6s</s><s style="left:58.90%">9s</s><s style="left:78.53%">12s</s><s style="left:98.17%">15s</s></div>
-        </div>
-        <div class="an-ctl">
-          <button class="pbtn" id="anPlay" aria-label="Play or pause"><svg viewBox="0 0 24 24" class="ic-play"><path d="M6 3l14 9-14 9z"/></svg><svg viewBox="0 0 24 24" class="ic-pause"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
-          <button class="pbtn ghost" id="anMute" aria-label="Toggle sound">sound on</button>
-          <span class="an-legend"><i></i>graphic beat</span>
-        </div>
-        <p class="an-words" id="anWords"><span data-s="0.1" data-e="0.39">Three</span> <span data-s="0.39" data-e="0.81">things</span> <span data-s="0.81" data-e="1.11">sell</span> <span data-s="1.11" data-e="1.18">a</span> <span data-s="1.18" data-e="1.55">house</span> <span data-s="1.55" data-e="2.05">faster</span> <span data-s="2.05" data-e="2.33">than</span> <span data-s="2.33" data-e="2.35">a</span> <span data-s="2.35" data-e="2.68">price</span> <span data-s="2.68" data-e="3.08">cut.</span> <span data-s="3.08" data-e="3.55">Photos</span> <span data-s="3.55" data-e="3.94">taken</span> <span data-s="3.94" data-e="4.1">at</span> <span data-s="4.1" data-e="4.5">seven</span> <span data-s="4.5" data-e="4.65">in</span> <span data-s="4.65" data-e="4.89">the</span> <span data-s="4.89" data-e="5.48">morning.</span> <span data-s="5.48" data-e="5.58">A</span> <span data-s="5.58" data-e="5.93">listing</span> <span data-s="5.93" data-e="6.16">that</span> <span data-s="6.16" data-e="6.45">leads</span> <span data-s="6.45" data-e="6.68">with</span> <span data-s="6.68" data-e="6.9">the</span> <span data-s="6.9" data-e="7.28">kitchen,</span> <span data-s="7.28" data-e="7.48">not</span> <span data-s="7.48" data-e="7.68">the</span> <span data-s="7.68" data-e="8.09">square</span> <span data-s="8.09" data-e="8.6">footage,</span> <span data-s="8.6" data-e="8.82">and</span> <span data-s="8.82" data-e="9.5">answering</span> <span data-s="9.5" data-e="9.87">every</span> <span data-s="9.87" data-e="10.41">message</span> <span data-s="10.41" data-e="10.85">inside</span> <span data-s="10.85" data-e="11.76">10</span> <span data-s="11.76" data-e="11.88">minutes.</span> <span data-s="11.88" data-e="12.27">That</span> <span data-s="12.27" data-e="12.52">last</span> <span data-s="12.52" data-e="12.76">one</span> <span data-s="12.76" data-e="13.15">alone</span> <span data-s="13.15" data-e="13.65">closed</span> <span data-s="13.65" data-e="13.81">my</span> <span data-s="13.81" data-e="14.13">last</span> <span data-s="14.13" data-e="14.46">four</span> <span data-s="14.46" data-e="15.16">deals.</span> </p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ PROCESS ============ -->
 <section id="process">
   <div class="wrap">
     <p class="eyebrow rv">How it works</p>
-    <h2 class="display rv">Three steps.<br>Two of them are <span class="o">mine</span>.</h2>
-    <p class="lede rv">You're not going to manage me. No onboarding call, no brand questionnaire, no Slack channel to keep up with.</p>
+    <h2 class="display rv">A clear brief.<br>A focused <span class="o">edit</span>.</h2>
+    <p class="lede rv">The project starts with the source, the audience, and the deliverables—not a blanket package. We agree the output mix, review steps, and schedule before editing begins.</p>
 
     <div class="stack" id="stack">
       <div class="step rv-l">
         <div class="n">01</div>
-        <div><h3 class="display">You drop the footage</h3><p>A link is enough. Raw phone video, a podcast recording, a Zoom call, a livestream — whatever you already have. No shot list, no notes required.</p></div>
+        <div><h3 class="display">You share the brief</h3><p>Send the source format, target channels, desired deliverables, reference style, and timing needs. Raw phone video, a podcast, an interview, an event, or a livestream can all be scoped.</p></div>
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div>
       </div>
       <div class="step rv-r">
         <div class="n">02</div>
-        <div><h3 class="display">I cut it</h3><p>Hook first, captions matched to the audio, graphics built from what you said. First cut back within 48 hours. Revisions come back the same day you ask.</p></div>
+        <div><h3 class="display">I shape the edit</h3><p>Claude, Python, FFmpeg, and Whisper help with transcript review, clip preparation, captions, and repeatable production tasks. Human creative direction guides the hook, story, pacing, framing, brand fit, and quality check.</p></div>
         <div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
       </div>
       <div class="step rv-l">
         <div class="n">03</div>
-        <div><h3 class="display">You post it</h3><p>Delivered ready to upload — vertical for Reels, TikTok and Shorts, horizontal if you want it. Then you send the next one.</p></div>
+        <div><h3 class="display">We review and deliver</h3><p>You review against the agreed direction. Approved versions are prepared to the agreed channel, caption, audio, framing, and export specifications.</p></div>
         <div class="ico"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></div>
       </div>
     </div>
@@ -948,96 +844,77 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
       <div class="about-copy">
         <p class="eyebrow">The editor</p>
         <h2 class="display">I'm <span class="o">Max Love</span>.</h2>
-        <p class="lede" style="margin-bottom:0">I've been cutting video since 2016. Deluxe Reels is me — not a studio, not a queue of freelancers. Every edit on this page is mine, and every edit you'd get is too. If the work is good, that's on me. If it's late, that's on me as well.</p>
+        <p class="lede" style="margin-bottom:0">Deluxe Reels is a hands-on editing service, not a queue of anonymous freelancers. I use Claude, Python, FFmpeg, and Whisper to accelerate transcript review, clip preparation, captions, and repeatable production tasks. Creative direction, story judgment, and final quality assurance stay human.</p>
         <div class="sig"><i></i><span class="hand">Max Love</span></div>
         <div class="facts">
-          <div><b class="num" data-to="2016">0</b><i>Editing since</i></div>
-          <div><b class="num" data-to="48" data-suffix="h">0h</b><i>First cut back</i></div>
-          <div><b>$<span class="num" data-to="10">0</span></b><i>Per edit, every pack</i></div>
+          <div><b>Story</b><i>Hooks and pacing</i></div>
+          <div><b>Sound</b><i>Cleanup and balance</i></div>
+          <div><b>QA</b><i>Human final review</i></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PRICE ============ -->
-<section id="price">
+<!-- ============ SERVICES & SCOPE ============ -->
+<section id="scope">
   <div class="wrap">
-    <p class="eyebrow rv">Pricing</p>
-    <h2 class="display rv">Three prices.<br>No call <span class="o">required</span>.</h2>
-    <p class="lede rv">The studios running ads for this start at $999 a month and hide the rest behind a call. Mine is on the page: packs are $10 an edit, and the monthly is me, every working day, for $750.</p>
+    <p class="eyebrow rv">Services</p>
+    <h2 class="display rv">Choose the relationship.<br>Scope the <span class="o">work</span>.</h2>
+    <p class="lede rv">Every engagement is shaped around the footage, channels, creative direction, output mix, and review needs. The proposal defines what is included before production starts.</p>
 
     <div class="tiers rv">
       <div class="tier">
-        <div class="tier-top"><span class="tier-name">Starter pack</span><span class="tier-tag">$10 an edit</span></div>
-        <div class="tier-amt"><b>$<span class="num" data-to="300">0</span></b><i>one-time · 30 edits</i></div>
+        <div class="tier-top"><span class="tier-name">Focused project</span><span class="tier-tag">Defined engagement</span></div>
+        <div class="tier-amt"><b>Project</b><i>one source set · agreed deliverables</i></div>
         <ul class="inc">
-          <li>30 finished edits, use them at your pace</li>
-          <li>Hooks, matched captions, motion graphics, sound</li>
-          <li>First cut back in 48 hours</li>
-          <li>Nothing expires, nothing renews</li>
+          <li>Source footage and channel goals reviewed together</li>
+          <li>Clip count, formats, review steps, and exports agreed in writing</li>
+          <li>Hooks, captions, audio cleanup, graphics, and reframing as scoped</li>
+          <li>Schedule confirmed after the material and complexity are reviewed</li>
         </ul>
-        <a class="btn ghost" href="https://tally.so/r/jaVYZa">I need this <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <p class="tier-note">Starts with a free edit — no card.</p>
+        <a class="btn ghost" href="https://www.instagram.com/deluxereelsonly/">Ask about this scope <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="tier-note">The proposal follows the brief.</p>
       </div>
       <div class="tier hot">
-        <div class="tier-top"><span class="tier-name">The pack</span><span class="tier-tag">Most people start here</span></div>
-        <div class="tier-amt"><b>$<span class="num" data-to="500">0</span></b><i>one-time · 55 edits · works out to $9.09 each</i></div>
+        <div class="tier-top"><span class="tier-name">Ongoing editing</span><span class="tier-tag">Repeatable workflow</span></div>
+        <div class="tier-amt"><b>Partner</b><i>planned capacity · defined output mix</i></div>
         <ul class="inc">
-          <li>50 finished edits — plus 5 free, so 55</li>
-          <li>Hooks, matched captions, motion graphics, sound</li>
-          <li>First cut back in 48 hours, revisions same day</li>
-          <li>Vertical and horizontal from the same footage</li>
-          <li>Nothing expires, nothing renews</li>
+          <li>Consistent source handoff, channel mix, and approval process</li>
+          <li>Long-form footage shaped into a planned set of short-form assets</li>
+          <li>Caption, audio, reframing, and export standards carried forward</li>
+          <li>Capacity and schedule matched to the publishing plan</li>
         </ul>
-        <a class="btn" href="https://tally.so/r/jaVYZa">I need this <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <p class="tier-note">Starts with a free edit — no card.</p>
+        <a class="btn" href="https://www.instagram.com/deluxereelsonly/">Plan an ongoing scope <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="tier-note">Defined capacity, not vague volume.</p>
       </div>
       <div class="tier">
-        <div class="tier-top"><span class="tier-name">Full-time editor</span><span class="tier-tag slots">3 slots · 3 open</span></div>
-        <div class="tier-amt"><b>$<span class="num" data-to="750">0</span></b><i>per month · unlimited · month to month</i></div>
+        <div class="tier-top"><span class="tier-name">Content repurposing</span><span class="tier-tag">Multi-format</span></div>
+        <div class="tier-amt"><b>System</b><i>long-form source · channel-ready outputs</i></div>
         <ul class="inc">
-          <li>Me, on your content, every working day</li>
-          <li>Send as much as you make — no cap, no counting</li>
-          <li>Same-day turnaround once we're in rhythm</li>
-          <li>Priority over pack clients</li>
-          <li>Three of these exist, because there is one of me</li>
-          <li>Cancel any month, no notice period</li>
+          <li>Podcasts, interviews, events, and creator footage reviewed for moments</li>
+          <li>Strong sections shaped into focused short-form narratives</li>
+          <li>Readable captions, clean audio, and platform-specific reframing</li>
+          <li>Approved versions prepared to the agreed export specifications</li>
         </ul>
-        <a class="btn ghost" href="https://tally.so/r/jaVYZa">I need this <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <p class="tier-note">Starts with a free edit — no card.</p>
-      </div>
-    </div>
-    <div class="calc rv" id="calc">
-      <div class="calc-l">
-        <p class="eyebrow">Work it out</p>
-        <h3 class="display">How many videos a month?</h3>
-        <div class="calc-row"><input type="range" id="calcN" min="4" max="120" step="1" value="20" aria-label="Videos per month"><output id="calcOut" for="calcN">20</output></div>
-        <p class="calc-hint">Drag it. The right option and the real per-edit price update live.</p>
-      </div>
-      <div class="calc-r">
-        <div class="calc-pick"><span class="tier-tag" id="calcTag">best fit</span><b id="calcTier">The pack</b><i id="calcWhy">50 edits + 5 free covers you for about 2.7 months</i></div>
-        <div class="calc-nums">
-          <div><b class="num" id="calcPer">$9.09</b><i>per edit</i></div>
-          <div><b class="num" id="calcMo">$182</b><i>per month, at that pace</i></div>
-          <div><b class="num" id="calcFirst">$0</b><i>your first edit</i></div>
-        </div>
+        <a class="btn ghost" href="https://www.instagram.com/deluxereelsonly/">Scope a content system <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="tier-note">One source, a deliberate output mix.</p>
       </div>
     </div>
     <div class="guarantee rv">
       <div class="g-mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4 8 14v16c0 15 10 26 24 30 14-4 24-15 24-30V14z"/><path d="m22 32 7 7 13-14"/></svg></div>
       <div>
-        <p class="eyebrow">The no-lock-in guarantee</p>
-        <h3 class="display">If it isn't right, you don't pay for it.</h3>
+        <p class="eyebrow">How scope gets set</p>
+        <h3 class="display">Clear before the first cut.</h3>
         <ul class="g-list">
-          <li><b>The free edit is free.</b> No card, no trial, nothing to cancel.</li>
-          <li><b>Packs never expire</b>, and unused edits are refunded in full if you ever want out.</li>
-          <li><b>A cut that isn't right gets recut</b> until it is. You don't approve it, you don't count it.</li>
-          <li><b>The monthly cancels the day you say so.</b> No notice period, no exit call.</li>
+          <li><b>Source:</b> format, length, condition, and handoff method.</li>
+          <li><b>Deliverables:</b> output mix, channels, captions, audio, framing, and exports.</li>
+          <li><b>Creative:</b> audience, references, brand direction, and approval criteria.</li>
+          <li><b>Plan:</b> review steps, capacity, dependencies, and schedule.</li>
         </ul>
       </div>
     </div>
-    <p class="note rv" style="max-width:none">Every option starts the same way: you send one video, I cut it free, you decide. No card until you've seen your own footage cut.</p>
+    <p class="note rv" style="max-width:none">Share the brief in a direct message. After the material and goals are reviewed, you'll receive a recommended scope and next steps.</p>
   </div>
 </section>
 
@@ -1048,16 +925,16 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <h2 class="display rv">The <span class="o">real</span> ones.</h2>
     <div class="faq rv">
       <details>
-        <summary>Is the free edit actually free?</summary>
-        <div class="ans"><p>Yes. You send a video, I cut it, I send it back. No card, no trial that starts billing, nothing to cancel. If you don't like it, you keep the edit and we're done.</p></div>
+        <summary>How are projects priced?</summary>
+        <div class="ans"><p>After I review the source, channels, deliverables, creative direction, and review needs. The proposal sets the scope and terms before editing begins; capacity and outputs are defined rather than left open-ended.</p></div>
       </details>
       <details>
-        <summary>Pack or monthly — which one?</summary>
-        <div class="ans"><p>If you have a backlog or post a few times a week, a pack: 30 for $300, or 50 for $500 with five extra, use them at your own pace, nothing expires. If you're making content every day and want someone on it every day, the full-time monthly at $750 — unlimited. Not sure? Start with a pack; you can move to monthly whenever it starts making sense.</p></div>
+        <summary>What affects the schedule?</summary>
+        <div class="ans"><p>Source length and condition, the number and format of deliverables, edit complexity, dependencies, and review needs. Timing is confirmed as part of the scope rather than promised before the footage is reviewed.</p></div>
       </details>
       <details>
-        <summary>How fast is the turnaround really?</summary>
-        <div class="ans"><p>First cut within 48 hours of you sending the footage. Revisions come back the same day you ask for them. If a week ever goes quiet, something has gone wrong and you should chase me.</p></div>
+        <summary>What can you make from long-form footage?</summary>
+        <div class="ans"><p>Focused short-form cuts with hooks, pacing, captions, audio cleanup, graphics where they serve the idea, platform-specific reframing, and approved export versions. The exact mix is agreed for the project.</p></div>
       </details>
       <details>
         <summary>Do you write the hooks or do I?</summary>
@@ -1065,46 +942,42 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
       </details>
       <details>
         <summary>What do you need from me to start?</summary>
-        <div class="ans"><p>A link to one video. That's the whole thing. No brand deck, no questionnaire, no kickoff call.</p></div>
+        <div class="ans"><p>Your source format, target channels, desired deliverables, reference style, and timing needs. A footage link or representative sample helps me recommend the right scope.</p></div>
       </details>
       <details>
         <summary>Do I have to get on a call?</summary>
-        <div class="ans"><p>No. Everything runs over email. If you'd rather talk we can, but nothing about this requires it and you'll never be chased for one.</p></div>
+        <div class="ans"><p>No. The inquiry and project details can start in writing. If a conversation would clarify a complex brief, we can decide that together.</p></div>
       </details>
       <details>
-        <summary>What if I buy a pack and stop using it?</summary>
-        <div class="ans"><p>Packs never expire, so you can come back to it in six months. And if you'd rather have the money than the edits, unused ones are refunded in full. You are never stuck holding something you paid for and didn't use.</p></div>
+        <summary>How do the tools fit into the workflow?</summary>
+        <div class="ans"><p>Claude, Python, FFmpeg, and Whisper help accelerate transcript review, clip preparation, captions, and repeatable production work. They support the process; human creative direction and quality assurance decide what makes the final cut.</p></div>
       </details>
       <details>
-        <summary>Why is it only $10 an edit?</summary>
-        <div class="ans"><p>Because there's nothing between you and the editor. No account manager, no sales team, no office, no calls to sit through — and the boring parts of an edit (matching captions to the audio, timing, exports) run on software I've built over the years, so my time goes on the part that matters: what happens on screen. You're paying for the cut, not the overhead.</p></div>
-      </details>
-      <details>
-        <summary>Do you do referrals?</summary>
-        <div class="ans"><p>Yes, and it's the best deal on this page. Send someone who buys a pack and you both get five free edits added — no code, just tell me who.</p></div>
+        <summary>Is every reel client work?</summary>
+        <div class="ans"><p>No. The portfolio labels sample footage and real client footage separately. The edits are shown as evidence of the work itself, without presenting a sample subject as a client.</p></div>
       </details>
       <details>
         <summary>Who's actually doing the editing?</summary>
-        <div class="ans"><p>Me — Max. I've been editing video since 2016. It isn't outsourced and it isn't a queue. If the work is good that's mine, and if it's late that's mine too.</p></div>
+        <div class="ans"><p>Max Love. The workflow uses purpose-built tools for repeatable production tasks, while creative direction, story judgment, and final quality assurance remain hands-on.</p></div>
       </details>
     </div>
-    <p class="faq-cta rv">Still not sure? That's what the free edit is for. <a class="btn" href="https://tally.so/r/jaVYZa">Send one video</a></p>
+    <p class="faq-cta rv">Have footage in mind? Share the brief and get a recommended scope. <a class="btn" href="https://www.instagram.com/deluxereelsonly/">Message @deluxereelsonly</a></p>
   </div>
 </section>
 
 <!-- ============ END ============ -->
 <section id="end">
   <div class="layer l-glow" data-depth="0.10"></div>
-  <div class="layer l-ghost" data-depth="0.18"><span>SEND ONE</span></div>
+  <div class="layer l-ghost" data-depth="0.18"><span>BUILD THE SCOPE</span></div>
   <div class="layer l-grid" data-depth="0.05"></div>
   <div class="wrap">
-    <h2 class="display rv">Send me <span class="o">one</span> video.</h2>
-    <p class="lede rv">You'll have it back cut in 48 hours and it won't cost you anything. That's the entire pitch.</p>
-    <p class="rv"><a class="btn big" href="https://tally.so/r/jaVYZa">Get a free edit <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
-    <ol class="free-steps rv" aria-label="How the free edit works">
-      <li><b>1</b><span>Paste a link to your last video</span></li>
-      <li><b>2</b><span>I cut it, no charge, in 48 hours</span></li>
-      <li><b>3</b><span>You watch it and decide</span></li>
+    <h2 class="display rv">Tell me what you're <span class="o">making</span>.</h2>
+    <p class="lede rv">Share the source, target channels, desired deliverables, reference style, and timing needs. I'll use that brief to recommend a scope and next steps.</p>
+    <p class="rv"><a class="btn big" href="https://www.instagram.com/deluxereelsonly/">Start a project inquiry <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+    <ol class="scope-steps rv" aria-label="How the project inquiry works">
+      <li><b>1</b><span>Describe the source and audience</span></li>
+      <li><b>2</b><span>Choose the deliverables and references</span></li>
+      <li><b>3</b><span>Review the recommended scope</span></li>
     </ol>
   </div>
 </section>
@@ -1115,7 +988,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <span>
       <a href="https://www.instagram.com/deluxereelsonly/" rel="noopener">@deluxereelsonly</a>
       &nbsp;·&nbsp;
-      <a href="https://tally.so/r/jaVYZa">Get a free edit</a>
+      <a href="https://www.instagram.com/deluxereelsonly/">Start a project inquiry</a>
     </span>
   </div>
 </footer>
@@ -1125,26 +998,13 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   <nav class="menu-in" aria-label="Sections">
     <a href="#work"><b>01</b>Work</a>
     <a href="#proof"><b>02</b>Results</a>
-    <a href="#anatomy"><b>03</b>Anatomy</a>
-    <a href="#process"><b>04</b>Process</a>
-    <a href="#about"><b>05</b>Max</a>
-    <a href="#price"><b>06</b>Pricing</a>
-    <a href="#faq"><b>07</b>FAQ</a>
-    <a class="btn big menu-cta" href="https://tally.so/r/jaVYZa">Get a free edit</a>
-    <p class="menu-foot">@deluxereelsonly · $10 an edit · first one free</p>
+    <a href="#process"><b>03</b>Process</a>
+    <a href="#about"><b>04</b>Max</a>
+    <a href="#scope"><b>05</b>Services</a>
+    <a href="#faq"><b>06</b>FAQ</a>
+    <a class="btn big menu-cta" href="https://www.instagram.com/deluxereelsonly/">Start a project inquiry</a>
+    <p class="menu-foot">@deluxereelsonly · project-based editing · human QA</p>
   </nav>
-</div>
-<!-- slide-over: the free-edit form, without leaving the page -->
-<div class="sheet" id="sheet" aria-hidden="true">
-  <div class="sheet-bg" data-close></div>
-  <aside class="sheet-panel" role="dialog" aria-modal="true" aria-label="Get a free edit">
-    <button class="sheet-x" data-close aria-label="Close">&times;</button>
-    <p class="eyebrow">Get a free edit</p>
-    <h3 class="display">Send one video.</h3>
-    <p class="sheet-sub">You'll hear back within 24 hours and have the cut within 48. No card, nothing to cancel, and you decide after you've seen it.</p>
-    <div class="sheet-form"><iframe data-tally-src="https://tally.so/embed/jaVYZa?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="430" frameborder="0" marginheight="0" marginwidth="0" title="Get a free edit"></iframe></div>
-    <a class="sheet-alt" href="https://tally.so/r/jaVYZa" target="_blank" rel="noopener">Open the form in a new tab instead</a>
-  </aside>
 </div>
 <!-- lightbox: a reel, big, with sound -->
 <div class="lb" id="lb" aria-hidden="true">
@@ -1155,7 +1015,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     <p class="lb-cap" id="lbCap"></p>
   </div>
 </div>
-<div class="dock" id="dock"><a class="btn" href="https://tally.so/r/jaVYZa">Get a free edit — it's actually free</a></div>
+<div class="dock" id="dock"><a class="btn" href="https://www.instagram.com/deluxereelsonly/">Start a project inquiry</a></div>
 
 <script>
 (() => {
@@ -1274,7 +1134,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 
 
   /* ---------- compare slider: raw vs edited, inside the phone ---------- */
-  const cmp = $('#cmp'), vRaw = $('.cmp-raw', cmp), vEd = $('.cmp-edit', cmp);
+  const cmp = $('#cmp');
   let cx = 52, cmpIdle = true, cmpT0 = performance.now();
   function setX(px) { cx = Math.max(6, Math.min(94, px)); cmp.style.setProperty('--x', cx + '%'); }
   function cmpFrom(e) { const r = cmp.getBoundingClientRect(); setX(((e.clientX - r.left) / r.width) * 100); }
@@ -1283,40 +1143,6 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   ['pointerup','pointercancel'].forEach(t => cmp.addEventListener(t, () => cmp.classList.remove('grab')));
   cmp.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); cmpIdle = false; setX(cx + (e.key === 'ArrowRight' ? 4 : -4)); cmp.setAttribute('aria-valuenow', Math.round(cx)); } });
   (function sway(now) { if (cmpIdle && !reduce) setX(52 + Math.sin((now - cmpT0) / 1400) * 9); requestAnimationFrame(sway); })(performance.now());
-  new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { vRaw.play().catch(()=>{}); vEd.play().catch(()=>{}); } else { vRaw.pause(); vEd.pause(); }
-  }), {threshold:.3}).observe(cmp);
-  setInterval(() => { if (!vRaw.paused && Math.abs(vRaw.currentTime - vEd.currentTime) > .08) vEd.currentTime = vRaw.currentTime; }, 800);
-
-  /* ---------- anatomy: scrub the real estate reel ---------- */
-  const anV = $('#anV'), tl = $('#tl'), tlFill = $('#tlFill'), tlHead = $('#tlHead'), tlTime = $('#tlTime');
-  const anPlay = $('#anPlay'), anMute = $('#anMute'), anIdx = $('#anIdx'), anTitle = $('#anTitle'), anSub = $('#anSub');
-  const marks = $$('.mk'), wspans = $$('#anWords span');
-  const BEATS = [[0.81, 3.05, "A price tag gets crossed out", "not a price cut: three things"], [6.16, 8.35, "The listing re-orders itself", "kitchen first, square footage struck"], [8.82, 11.76, "Three messages, three replies", "every one answered inside ten minutes"], [12.76, 15.28, "Four houses stamped SOLD", "the last four deals"]];
-  const DUR = 15.28;
-  function anSeek(t) { anV.currentTime = Math.max(0, Math.min(DUR - .05, t)); anPaint(); }
-  function anFrom(e) { const r = $('.tl-track', tl).getBoundingClientRect(); anSeek(((e.clientX - r.left) / r.width) * DUR); }
-  let scrubbing = false;
-  tl.addEventListener('pointerdown', e => { if (e.target.closest('.mk')) return; scrubbing = true; tl.setPointerCapture(e.pointerId); anFrom(e); });
-  tl.addEventListener('pointermove', e => { if (scrubbing) anFrom(e); });
-  ['pointerup','pointercancel'].forEach(t => tl.addEventListener(t, () => scrubbing = false));
-  tl.addEventListener('keydown', e => { if (e.key === 'ArrowRight') anSeek(anV.currentTime + .5); if (e.key === 'ArrowLeft') anSeek(anV.currentTime - .5); if (e.key === ' ') { e.preventDefault(); anPlay.click(); } });
-  marks.forEach(m => m.addEventListener('click', () => { anSeek(+m.dataset.t + .02); anV.play(); }));
-  anPlay.addEventListener('click', () => anV.paused ? anV.play() : anV.pause());
-  anMute.addEventListener('click', () => { anV.muted = !anV.muted; anMute.textContent = anV.muted ? 'sound on' : 'mute'; });
-  anV.addEventListener('play', () => anPlay.classList.add('playing'));
-  anV.addEventListener('pause', () => anPlay.classList.remove('playing'));
-  function anPaint() {
-    const t = anV.currentTime, p = t / DUR;
-    tlFill.style.width = (p * 100) + '%'; tlHead.style.left = (p * 100) + '%'; tlTime.textContent = t.toFixed(2); tl.setAttribute('aria-valuenow', t.toFixed(2));
-    const bi = BEATS.findIndex(b => t >= b[0] && t < b[1]);
-    marks.forEach((m, i) => m.classList.toggle('on', i === bi));
-    if (bi >= 0) { anIdx.textContent = '0' + (bi + 1); anTitle.textContent = BEATS[bi][2]; anSub.textContent = BEATS[bi][3]; }
-    else { anIdx.textContent = '\u2014'; anTitle.textContent = t < .5 ? 'Press play, or drag the playhead' : 'Face on screen, letting the line breathe'; anSub.textContent = t < .5 ? 'the graphics land on the exact word' : 'a card only earns its place when the sentence needs one'; }
-    wspans.forEach(w => { const s = +w.dataset.s, e = +w.dataset.e; w.classList.toggle('now', t >= s && t < e + .05); w.classList.toggle('said', t >= e + .05); });
-  }
-  (function anLoop() { if (!anV.paused) anPaint(); requestAnimationFrame(anLoop); })();
-  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) anV.play().catch(()=>{}); else anV.pause(); }), {threshold:.35}).observe($('#anatomy'));
 
   /* ---------- mouse-only details: hover preview, tilt, magnetic buttons, cursor parallax ---------- */
   if (matchMedia('(pointer:fine)').matches) {
@@ -1366,18 +1192,6 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
     if (href.startsWith('#')) { e.preventDefault(); const el = $(href); setTimeout(() => { if (window.__lenis) window.__lenis.scrollTo(el, {offset: -60, duration: 1}); else el.scrollIntoView({behavior: 'smooth'}); }, 320); }
   }));
 
-  /* ---------- the form, as a slide-over ---------- */
-  const sheet = $('#sheet'), tallyFrame = $('iframe', sheet);
-  let tallyLoaded = false;
-  function openSheet() {
-    if (!tallyLoaded) { tallyFrame.src = tallyFrame.dataset.tallySrc; const sc = document.createElement('script'); sc.src = 'https://tally.so/widgets/embed.js'; document.body.appendChild(sc); tallyLoaded = true; }
-    sheet.classList.add('open'); requestAnimationFrame(() => sheet.classList.add('in')); sheet.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop(); $('.sheet-x', sheet).focus();
-  }
-  function closeSheet() { sheet.classList.remove('in'); sheet.setAttribute('aria-hidden', 'true'); setTimeout(() => sheet.classList.remove('open'), 500); document.body.style.overflow = ''; window.__lenis && window.__lenis.start(); }
-  $$('a[href="https://tally.so/r/jaVYZa"]').forEach(a => a.addEventListener('click', e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openSheet(); }));
-  $$('[data-close]', sheet).forEach(el => el.addEventListener('click', closeSheet));
-
   /* ---------- reel lightbox ---------- */
   const lb = $('#lb'), lbV = $('#lbV'), lbCap = $('#lbCap');
   function openLb(src, cap) {
@@ -1386,11 +1200,7 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   }
   function closeLb() { lbV.pause(); lb.classList.remove('in'); lb.setAttribute('aria-hidden', 'true'); setTimeout(() => { lb.classList.remove('open'); lbV.removeAttribute('src'); lbV.load(); }, 350); document.body.style.overflow = ''; window.__lenis && window.__lenis.start(); }
   $$('[data-lbclose]', lb).forEach(el => el.addEventListener('click', closeLb));
-  addEventListener('keydown', e => { if (e.key === 'Escape') { closeSheet(); closeLb(); setMenu(false); } });
-
-  /* ---------- hero: tap for sound ---------- */
-  const heroV = $('#heroPhone video'), heroSnd = $('#heroSnd');
-  heroSnd.addEventListener('click', () => { heroV.muted = !heroV.muted; heroSnd.classList.toggle('on', !heroV.muted); $('span', heroSnd).textContent = heroV.muted ? 'tap for sound' : 'mute'; heroSnd.setAttribute('aria-label', heroV.muted ? 'Turn sound on' : 'Mute'); if (heroV.paused) heroV.play(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { closeLb(); setMenu(false); } });
 
   /* ---------- cards: click plays with sound, one at a time ---------- */
   const cards = $$('.card');
@@ -1407,21 +1217,6 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
 
 
 
-  /* ---------- calculator: which option, and the real per-edit price ---------- */
-  const calcN = $('#calcN');
-  if (calcN) {
-    const out = $('#calcOut'), tier = $('#calcTier'), why = $('#calcWhy'), per = $('#calcPer'), mo = $('#calcMo'), tag = $('#calcTag');
-    const money = v => '$' + (Math.round(v * 100) / 100).toFixed(v % 1 ? 2 : 0);
-    function calc() {
-      const n = +calcN.value; out.textContent = n; calcN.style.setProperty('--p', ((n - 4) / 116 * 100) + '%');
-      let t, w, p, m;
-      if (n <= 12) { t = 'Starter pack'; p = 10; m = n * 10; w = `30 edits lasts you about ${(30 / n).toFixed(1)} months`; tag.textContent = 'best fit'; }
-      else if (n <= 60) { t = 'The pack'; p = 500 / 55; m = n * p; w = `50 + 5 free covers about ${(55 / n).toFixed(1)} month${55 / n >= 1.5 ? 's' : ''} at this pace`; tag.textContent = 'best fit'; }
-      else { t = 'Full-time editor'; p = 750 / n; m = 750; w = `$750 flat, so every extra video is free — at ${n} a month that's ${money(p)} each`; tag.textContent = 'cheapest per edit'; }
-      tier.textContent = t; why.textContent = w; per.textContent = money(p); mo.textContent = money(m);
-    }
-    calcN.addEventListener('input', calc); calc();
-  }
   /* ---------- rail arrows ---------- */
   const rail = $('.rail');
   $$('.rail-btn').forEach(b => b.addEventListener('click', () => rail.scrollBy({left: 322 * +b.dataset.dir, behavior: 'smooth'})));
@@ -1457,18 +1252,17 @@ footer{border-top:1px solid var(--line);padding:46px 0;color:var(--mute);font-si
   }));
 })();
 
-/* niche entry: ?for=realtors|coaches|founders — same page, matching reel first */
+/* niche entry: ?for=realtors|coaches|founders */
 (function(){
   var f=new URLSearchParams(location.search).get('for');
   var M={
-    realtors:{tag:'For realtors',line:'Listing tours and market updates, cut so people stop scrolling.',reels:['reel3']},
-    coaches:{tag:'For coaches',line:'Your advice clips, cut so the point lands in the first second.',reels:['reel4','reel2']},
-    founders:{tag:'For founders',line:'Product and founder clips, cut so the offer is impossible to miss.',reels:['reel5','reel1']}
+    realtors:{tag:'For realtors',line:'Listing tours and market updates, cut so people stop scrolling.'},
+    coaches:{tag:'For coaches',line:'Your advice clips, cut so the point lands in the first second.'},
+    founders:{tag:'For founders',line:'Product and founder clips, cut so the offer is clear.'}
   };
   var m=M[f]; if(!m) return;
-  var eb=document.querySelector('#hero .eyebrow'); if(eb) eb.textContent=m.tag+' · Max Love · since 2016';
+  var eb=document.querySelector('#hero .eyebrow'); if(eb) eb.textContent=m.tag+' · Max Love · short-form editing';
   var sub=document.querySelector('#hero .sub'); if(sub){ var b=document.createElement('b'); b.textContent=m.line+' '; sub.insertBefore(b, sub.firstChild); }
-  var rail=document.querySelector('.rail'); if(rail){ m.reels.slice().reverse().forEach(function(r){ var v=rail.querySelector('video[src="media/'+r+'.mp4"]'); var c=v&&v.closest('.card'); if(c) rail.insertBefore(c, rail.firstChild); }); }
 })();
 </script>
 </body>
